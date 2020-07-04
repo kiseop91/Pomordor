@@ -30,11 +30,11 @@ void MainWindow::onClickToggleButton()
 	//DEFAULT SETTING VALUES
 	size_t width = ui->frame_left_menu->width();
 	size_t height = ui->frame_left_menu->height();
-	size_t maxExtend = 250;
-	size_t standard = 70;
+	size_t maxExtend = 180;
+	size_t standard = 0;
 	size_t widthExtended = 0;
 
-	if (width == 70)
+	if (width == 0)
 		widthExtended = maxExtend;
 	else
 		widthExtended = standard;
