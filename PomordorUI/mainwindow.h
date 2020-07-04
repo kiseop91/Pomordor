@@ -16,6 +16,7 @@ public:
 
 private slots:
 	void onClickPushButton();
+	void onClickToggleButton();
 private:
     Ui::MainWindow *ui;
 };
