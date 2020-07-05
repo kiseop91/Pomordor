@@ -11,13 +11,12 @@ MainWindow::MainWindow(QWidget *parent)
 	ui->setupUi(this);
 	
 	//setWindowFlags(Qt::Window | Qt::WindowStaysOnTopHint |  Qt::FramelessWindowHint);
-	QObject::connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(onClickPushButton()));
+	//QObject::connect(, SIGNAL(clicked()), this, SLOT(onClickPushButton()));
 	QObject::connect(ui->Btn_Toggle, SIGNAL(clicked()), this, SLOT(onClickToggleButton()));
 }
 
 void MainWindow::onClickPushButton()
 {
-	ui->progressBar->setValue(value++);
 }
 
 MainWindow::~MainWindow()
@@ -47,5 +46,24 @@ void MainWindow::onClickToggleButton()
 	animation->setEasingCurve(QEasingCurve::InOutSine);
 	animation->start();
 
+	int start, end;
+	if (widthExtended  != maxExtend)
+	{
+		start = 70 + maxExtend; // 70Àº ¿ÀÇÁ¼Â ( ¸Ç¿ŞÂÊ ¾ÆÀÌÄÜ ³ĞÀÌ )
+		end = 70;
+	}
+	else
+	{
+		start = 70;
+		end = 70 + maxExtend;
+	}
+
+	
+	QPropertyAnimation* animation2 = new QPropertyAnimation(ui->frame_pages, "geometry");
+	animation2->setDuration(400);
+	animation2->setStartValue(QRect(start, 0, 1000, 1000));
+	animation2->setEndValue(QRect( end, 0, 1000, 1000));
+	animation2->setEasingCurve(QEasingCurve::InOutSine);
+	animation2->start();
 }
 
