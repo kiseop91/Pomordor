@@ -20,9 +20,9 @@ MainWindow::MainWindow(QWidget *parent)
 	setWindowFlags(Qt::FramelessWindowHint);
 	setAttribute(Qt::WA_TranslucentBackground);
 
-	justOneCount = 0; //���� �ʱ�ȭ
+	justOneCount = 0; 
 	
-	mouseX = this->geometry().x(); //���� ���콺 ��ǥ�� �ʱ�ȭ
+	mouseX = this->geometry().x();
 	mouseY = this->geometry().y();
 	absY = this->geometry().y();
 	absX = this->geometry().x();
@@ -62,7 +62,7 @@ void MainWindow::onClickToggleButton()
 	int start, end;
 	if (widthExtended != maxExtend)
 	{
-		start = 70 + maxExtend; // 70�� ������ ( �ǿ��� ������ ���� )
+		start = 70 + maxExtend; 
 		end = 70;
 	}
 	else
@@ -123,4 +123,4 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *)
 {
 	justOneCount = 0;
 }
-}
+
