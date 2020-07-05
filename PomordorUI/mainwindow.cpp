@@ -2,18 +2,29 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QPropertyAnimation>
+#include <QMouseEvent>
 
 
-static int value = 0;
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 	, ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
 	
-	//setWindowFlags(Qt::Window | Qt::WindowStaysOnTopHint |  Qt::FramelessWindowHint);
-	//QObject::connect(, SIGNAL(clicked()), this, SLOT(onClickPushButton()));
+	QObject::connect(this , SIGNAL(clicked()), this, SLOT(onClickPushButton()));
 	QObject::connect(ui->Btn_Toggle, SIGNAL(clicked()), this, SLOT(onClickToggleButton()));
+
+
+	setWindowFlags(Qt::FramelessWindowHint);
+	setAttribute(Qt::WA_TranslucentBackground);
+
+	justOneCount = 0; //ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
+
+	mouseX = this->geometry().x(); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½Ê±ï¿½È­
+	mouseY = this->geometry().y();
+	absY = this->geometry().y();
+	absX = this->geometry().x();
 }
 
 void MainWindow::onClickPushButton()
@@ -50,7 +61,7 @@ void MainWindow::onClickToggleButton()
 	int start, end;
 	if (widthExtended  != maxExtend)
 	{
-		start = 70 + maxExtend; // 70Àº ¿ÀÇÁ¼Â ( ¸Ç¿ÞÂÊ ¾ÆÀÌÄÜ ³ÐÀÌ )
+		start = 70 + maxExtend; // 70ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ( ï¿½Ç¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ )
 		end = 70;
 	}
 	else
@@ -68,3 +79,28 @@ void MainWindow::onClickToggleButton()
 	animation2->start();
 }
 
+void MainWindow::mouseMoveEvent(QMouseEvent *mouse)
+{
+	if (this->isMaximized() == true) 
+		return;
+
+	if (mouse->button() == Qt::RightButton) 
+		return;
+
+	mouseX = QCursor::pos().x(); 
+	mouseY = QCursor::pos().y();
+
+	if (justOneCount == 0)
+	{
+		absX = mouse->pos().x() + 7; 
+		absY = mouse->pos().y() + 7;
+		justOneCount++; 
+	}
+
+	this->move(mouseX - absX, mouseY - absY); 
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent *)
+{
+	justOneCount = 0; 
+}
