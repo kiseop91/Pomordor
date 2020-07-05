@@ -15,6 +15,9 @@ public:
 private slots:
 	void onClickPushButton();
 	void onClickToggleButton();
+	void onClickCloseButton();
+	void onClickMaximizeButton();
+	void onClickMinimizeButton();
 private:
     Ui::MainWindow *ui;
 

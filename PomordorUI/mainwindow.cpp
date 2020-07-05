@@ -11,16 +11,17 @@ MainWindow::MainWindow(QWidget *parent)
 	, ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
-	
-	QObject::connect(this , SIGNAL(clicked()), this, SLOT(onClickPushButton()));
-	QObject::connect(ui->Btn_Toggle, SIGNAL(clicked()), this, SLOT(onClickToggleButton()));
 
+	QObject::connect(ui->Btn_Toggle, SIGNAL(clicked()), this, SLOT(onClickToggleButton()));
+	QObject::connect(ui->Btn_close, SIGNAL(clicked()), this, SLOT(onClickCloseButton()));
+	QObject::connect(ui->Btn_maximaize, SIGNAL(clicked()), this, SLOT(onClickMaximizeButton()));
+	QObject::connect(ui->Btn_minimaize, SIGNAL(clicked()), this, SLOT(onClickMinimizeButton()));
 
 	setWindowFlags(Qt::FramelessWindowHint);
 	setAttribute(Qt::WA_TranslucentBackground);
 
 	justOneCount = 0; //���� �ʱ�ȭ
-
+	
 	mouseX = this->geometry().x(); //���� ���콺 ��ǥ�� �ʱ�ȭ
 	mouseY = this->geometry().y();
 	absY = this->geometry().y();
@@ -59,7 +60,7 @@ void MainWindow::onClickToggleButton()
 	animation->start();
 
 	int start, end;
-	if (widthExtended  != maxExtend)
+	if (widthExtended != maxExtend)
 	{
 		start = 70 + maxExtend; // 70�� ������ ( �ǿ��� ������ ���� )
 		end = 70;
@@ -70,37 +71,56 @@ void MainWindow::onClickToggleButton()
 		end = 70 + maxExtend;
 	}
 
-	
+
 	QPropertyAnimation* animation2 = new QPropertyAnimation(ui->frame_pages, "geometry");
 	animation2->setDuration(400);
 	animation2->setStartValue(QRect(start, 0, 1000, 1000));
-	animation2->setEndValue(QRect( end, 0, 1000, 1000));
+	animation2->setEndValue(QRect(end, 0, 1000, 1000));
 	animation2->setEasingCurve(QEasingCurve::InOutSine);
 	animation2->start();
 }
 
+void MainWindow::onClickCloseButton()
+{
+	this->close();
+}
+
+void MainWindow::onClickMaximizeButton()
+{
+	if (this->isMaximized())
+		this->showNormal();
+	else
+		this->showMaximized();
+}
+
+void MainWindow::onClickMinimizeButton()
+{
+	this->showMinimized();
+}
+
 void MainWindow::mouseMoveEvent(QMouseEvent *mouse)
 {
-	if (this->isMaximized() == true) 
+	if (this->isMaximized() == true)
 		return;
 
-	if (mouse->button() == Qt::RightButton) 
+	if (mouse->button() == Qt::RightButton)
 		return;
 
-	mouseX = QCursor::pos().x(); 
+	mouseX = QCursor::pos().x();
 	mouseY = QCursor::pos().y();
 
 	if (justOneCount == 0)
 	{
-		absX = mouse->pos().x() + 7; 
+		absX = mouse->pos().x() + 7;
 		absY = mouse->pos().y() + 7;
-		justOneCount++; 
+		justOneCount++;
 	}
 
-	this->move(mouseX - absX, mouseY - absY); 
+	this->move(mouseX - absX, mouseY - absY);
 }
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *)
 {
-	justOneCount = 0; 
+	justOneCount = 0;
+}
 }
