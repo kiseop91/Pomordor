@@ -19,5 +19,15 @@ private slots:
 	void onClickToggleButton();
 private:
     Ui::MainWindow *ui;
+
+	int mouseX; 
+	int mouseY; 
+	int absX;
+	int absY; 
+	int justOneCount;
+
+	void mouseMoveEvent(QMouseEvent *mouse);
+	void mouseReleaseEvent(QMouseEvent *); 
+
 };
 
