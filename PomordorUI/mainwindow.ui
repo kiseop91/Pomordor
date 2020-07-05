@@ -205,7 +205,7 @@ QPushButton:hover {
             </property>
             <property name="icon">
              <iconset resource="files.qrc">
-              <normaloff>:/20x20/icons/20x20/cil-minus.png</normaloff>:/20x20/icons/20x20/cil-minus.png</iconset>
+              <normaloff>:/20x20/icons/20x20/cil-window-minimize.png</normaloff>:/20x20/icons/20x20/cil-window-minimize.png</iconset>
             </property>
            </widget>
           </item>
@@ -239,7 +239,7 @@ QPushButton:hover {
             </property>
             <property name="icon">
              <iconset resource="files.qrc">
-              <normaloff>:/20x20/icons/20x20/cil-library.png</normaloff>:/20x20/icons/20x20/cil-library.png</iconset>
+              <normaloff>:/20x20/icons/20x20/cil-window-restore.png</normaloff>:/20x20/icons/20x20/cil-window-restore.png</iconset>
             </property>
            </widget>
           </item>
@@ -264,7 +264,7 @@ QPushButton:hover {
 	border: 0px solid;
 }
 QPushButton:hover {
-	background-color: rgb(255, 0, 0);
+	background-color: rgb(200, 0, 0);
 }</string>
             </property>
             <property name="text">
@@ -272,7 +272,7 @@ QPushButton:hover {
             </property>
             <property name="icon">
              <iconset resource="files.qrc">
-              <normaloff>:/20x20/icons/20x20/cil-x-circle.png</normaloff>:/20x20/icons/20x20/cil-x-circle.png</iconset>
+              <normaloff>:/20x20/icons/20x20/cil-x.png</normaloff>:/20x20/icons/20x20/cil-x.png</iconset>
             </property>
            </widget>
           </item>
@@ -530,6 +530,11 @@ QPushButton:hover {
                  <height>40</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
 	color: rgb(255, 255, 255);
@@ -553,6 +558,11 @@ QPushButton:hover {
                  <height>40</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
 	color: rgb(255, 255, 255);
@@ -575,6 +585,11 @@ QPushButton:hover {
                  <width>0</width>
                  <height>40</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Segoe UI</family>
+                </font>
                </property>
                <property name="styleSheet">
                 <string notr="true">QPushButton {
