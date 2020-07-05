@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.16.4 FATAL_ERROR)
 
 project(PomordorUI LANGUAGES CXX)
 
@@ -30,11 +30,15 @@ set(project_ui
 
 set(project_headers
     mainwindow.h
+    Popup.h
+    pompch.h
 )
 
 set(project_sources 
     main.cpp
     mainwindow.cpp
+    Popup.cpp
+    pompch.cpp
 )
 
 qt5_wrap_ui(project_headers_wrapped ${project_ui})
@@ -42,6 +46,8 @@ qt5_wrap_cpp(project_sources_moc ${project_headers} )
 
 add_executable(${PROJECT_NAME} ${project_headers} ${project_sources} ${project_sources_moc} ${project_headers_wrapped} files.qrc)
 
+#Add precomplied header
+target_precompile_headers(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/pompch.h")
 
 target_link_libraries(${PROJECT_NAME}
     PUBLIC

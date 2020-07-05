@@ -1,7 +1,8 @@
+#include "pompch.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QPropertyAnimation>
+
 
 static int value = 0;
 MainWindow::MainWindow(QWidget *parent)
