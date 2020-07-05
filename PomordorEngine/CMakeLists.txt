@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.16.2 FATAL_ERROR)
 
 project(PomordorEngine LANGUAGES CXX)
 
