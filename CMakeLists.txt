@@ -6,6 +6,6 @@ enable_testing()
 add_subdirectory(googletest)
 add_subdirectory(PomordorEngine)
 add_subdirectory(PomordorUI)
-add_subdirectory(Test)
+add_subdirectory(Tests)
 
  
