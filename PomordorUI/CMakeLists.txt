@@ -49,9 +49,12 @@ add_executable(${PROJECT_NAME} ${project_headers} ${project_sources} ${project_s
 #Add precomplied header
 target_precompile_headers(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/pompch.h")
 
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/PomordorEngine)
+
 target_link_libraries(${PROJECT_NAME}
     PUBLIC
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
+    PomordorEngine
 )
