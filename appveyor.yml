@@ -1,8 +1,4 @@
 version: '{build}'
-branches:
-  only:
-  - master
-  - develop
 clone_folder: c:\projects\cmake-init
 image:
 - Visual Studio 2017
@@ -29,7 +25,6 @@ init:
 
 before_build:
 - cmd: |-
-    git submodule update --init --recursive
     mkdir build
     cd build
     cmake --version
