@@ -14,7 +14,11 @@ namespace Pome {
 		static void ToastMessage(const std::string& Title, const std::string& Message, float duration = 5.0f, const std::string& iconPath = "");
 
 	private:
+		static void runToast();
+
+	private:
 		static bool s_isInitiated;
+		static bool s_isRunning;
 
 		friend void EngineInit();
 	};

@@ -4,6 +4,7 @@
 namespace Pome {
 
 	bool Toast::s_isInitiated = false;
+	bool Toast::s_isRunning = false;
 
 	const std::string toastScriptName= "toast.py";
 
@@ -16,6 +17,10 @@ namespace Pome {
 
 	void Toast::ToastMessage(const std::string & title, const std::string & message, float duration, const std::string & iconPath)
 	{
+
+		if (s_isRunning) return;
+		s_isRunning = true;
+
 		std::ofstream pythonScript(toastScriptName);
 		POM_ASSERT(pythonScript.is_open());
 
@@ -46,11 +51,16 @@ namespace Pome {
 				;
 		}
 	#endif
-
-		pythonScript.close();
-		std::system(toastScriptName.c_str());
+		
+		std::thread thread(runToast);
+		thread.detach();
 
 		return;
+	}
+	void Toast::runToast()
+	{
+		std::system(toastScriptName.c_str());
+		s_isRunning = false;
 	}
 }
 
