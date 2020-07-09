@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
 	QObject::connect(ui->Btn_close, SIGNAL(clicked()), this, SLOT(onClickCloseButton()));
 	QObject::connect(ui->Btn_maximaize, SIGNAL(clicked()), this, SLOT(onClickMaximizeButton()));
 	QObject::connect(ui->Btn_minimaize, SIGNAL(clicked()), this, SLOT(onClickMinimizeButton()));
+	QObject::connect(ui->Btn_Menu_1, SIGNAL(clicked()), this, SLOT(onClickPushButton()));
 
 	setWindowFlags(Qt::FramelessWindowHint);
 	setAttribute(Qt::WA_TranslucentBackground);
@@ -30,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::onClickPushButton()
 {
+	Pome::Toast::ToastMessage("kiseop e", "ada", 5.0f);
 }
 
 MainWindow::~MainWindow()

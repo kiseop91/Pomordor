@@ -3,9 +3,14 @@
 
 namespace Pome{
 
-    void printHello()
-    {
-        std::cout << "hello world" << std::endl;
-        return;
-    }
+	namespace Util {
+
+		void printHello()
+		{
+			std::cout << "hello world" << std::endl;
+			return;
+		}
+
+	}
+    
 }

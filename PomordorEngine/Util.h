@@ -2,5 +2,9 @@
 
 namespace Pome{
 
-    void printHello();
+	namespace Util {
+
+		void printHello();
+
+	}
 }
