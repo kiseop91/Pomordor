@@ -9,17 +9,23 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(project_headers 
     pegpch.h
-    Core.h
+    Core/Core.h
     Pome.h
-    Util.h
+    Util/Util.h
     main.h
     Toast.h
+    Util/PyhtonScript.h
+    FileSystem/FileManager.h
+    FileSystem/IFile.h
 )
 set(project_source 
     pegpch.cpp
     main.cpp
-    Util.cpp
+    Util/Util.cpp
     Toast.cpp
+    Util/PyhtonScript.cpp
+    FileSystem/FileManager.cpp
+    FileSystem/IFile.cpp
 )
 
 # set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}../vendor/lib)

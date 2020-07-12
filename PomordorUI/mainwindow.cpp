@@ -31,7 +31,10 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::onClickPushButton()
 {
-	Pome::Toast::ToastMessage("kiseop e", "ada", 5.0f);
+	PythonScript script;
+	script.CreateToastScript("zzzz", "test", 5.f, "");
+	FileManager::Save(script, "test.py");
+	Pome::Toast::ToastMessage("test.py");
 }
 
 MainWindow::~MainWindow()

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Core.h"
+#include "Core/Core.h"
 #include <string>
-
+class PythonScript;
 namespace Pome {
 
 	class Toast
@@ -11,10 +11,7 @@ namespace Pome {
 		static void Init();
 
 	public:
-		static void ToastMessage(const std::string& Title, const std::string& Message, float duration = 5.0f, const std::string& iconPath = "");
-
-	private:
-		static void runToast();
+		static int Toast::ToastMessage(const std::string& _fileName);
 
 	private:
 		static bool s_isInitiated;
