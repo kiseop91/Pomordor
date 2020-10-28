@@ -25,34 +25,49 @@ endif(MSVC)
 find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
 
 set(project_ui
-    mainwindow.ui
-	Timer.ui
+    src/MainWindow/mainwindow.ui
+	src/Timer/Timer.ui
 )
 
 set(project_headers
-    mainwindow.h
-    Popup.h
-    pompch.h
-	Timer.h
+    src/MainWindow/mainwindow.h
+    src/Popup.h
+    src/pompch.h
+	src/Timer/Timer.h
 )
 
 set(project_sources 
-    main.cpp
-    mainwindow.cpp
-    Popup.cpp
-    pompch.cpp
-	Timer.cpp
+    src/main.cpp
+    src/MainWindow/mainwindow.cpp
+	src/Timer/Timer.cpp
+    src/Popup.cpp
+    src/pompch.cpp
 )
 
 qt5_wrap_ui(project_headers_wrapped ${project_ui})
 qt5_wrap_cpp(project_sources_moc ${project_headers} )
 
-add_executable(${PROJECT_NAME} ${project_headers} ${project_sources} ${project_sources_moc} ${project_headers_wrapped} files.qrc)
+add_executable(
+	${PROJECT_NAME} 
+	${project_headers} 
+	${project_sources} 
+	${project_sources_moc} 
+	${project_headers_wrapped} 
+	assets/files.qrc
+)
 
-#Add precomplied header
-target_precompile_headers(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/pompch.h")
+target_precompile_headers(
+	${PROJECT_NAME} 
+	PUBLIC 
+	"${CMAKE_CURRENT_SOURCE_DIR}/src/pompch.h"
+)
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/PomordorEngine)
+target_include_directories(
+	${PROJECT_NAME} 
+	PUBLIC 
+	${CMAKE_SOURCE_DIR}/PomordorEngine/src
+	${CMAKE_CURRENT_SOURCE_DIR}/src
+)
 
 target_link_libraries(${PROJECT_NAME}
     PUBLIC

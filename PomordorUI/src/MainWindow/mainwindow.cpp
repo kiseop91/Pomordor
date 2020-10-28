@@ -5,7 +5,7 @@
 #include <QPropertyAnimation>
 #include <QMouseEvent>
 
-#include "Timer.h"
+#include "Timer/Timer.h"
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
