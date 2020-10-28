@@ -56,7 +56,9 @@
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(235, 206	, 203);</string>
+      <string notr="true">QFrame{
+	background-color: rgb(235, 206, 203);
+}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -75,11 +77,54 @@
        <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="bottomMargin">
        <number>0</number>
       </property>
+      <item>
+       <widget class="QPushButton" name="Btn_menu">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>40</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>40</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	border : none;
+}
+QPushButton:Hover{
+	background-color: rgba(255, 0, 0, 120);
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="../../assets/files.qrc">
+          <normaloff>:/24x24/icons/24x24/cil-menu.png</normaloff>:/24x24/icons/24x24/cil-menu.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>25</width>
+          <height>25</height>
+         </size>
+        </property>
+       </widget>
+      </item>
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
@@ -94,7 +139,7 @@
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="Btn_close_2">
+       <widget class="QPushButton" name="Btn_minimal">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -258,7 +303,10 @@ QPushButton:Hover{
 }</string>
           </property>
           <property name="text">
-           <string>PushButton</string>
+           <string/>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
           </property>
          </widget>
         </widget>
@@ -286,12 +334,43 @@ QPushButton:Hover{
          <property name="styleSheet">
           <string notr="true">QWidget{
    border-radius: 134px;
-   background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:0.0 rgba(255, 255, 255, 0), stop:0.0 rgba(240, 240, 240, 255));
+   background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:0.0 rgba(255, 255, 255, 0), stop:0.0 rgba(217, 215, 201, 255));
 }</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>140</y>
+           <width>332</width>
+           <height>70</height>
+          </rect>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel{
+	background-color: rgba(255, 255, 255, 0);
+	color :  rgb(237, 153, 157);
+	font-size : 60px;
+	font-weight : 100;
+}</string>
+         </property>
+         <property name="text">
+          <string>25 : 00</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
          </property>
         </widget>
         <zorder>CircularProgress_2</zorder>
         <zorder>CircularProgress</zorder>
+        <zorder>label</zorder>
        </widget>
       </item>
       <item>
@@ -361,10 +440,10 @@ QPushButton:Hover{
             <string notr="true">QPushButton{
 	Border:none;
 	border-radius:8px;
-	background-color: rgb(227, 183, 177);
+	background-color: rgb(235, 206, 203);
 }
 QPushButton:Hover{
-	background-color: rgba(227, 183, 177, 150);
+	background-color: rgba(255, 0, 0, 120);
 }</string>
            </property>
            <property name="text">
@@ -372,7 +451,13 @@ QPushButton:Hover{
            </property>
            <property name="icon">
             <iconset resource="../../assets/files.qrc">
-             <normaloff>:/16x16/icons/16x16/cil-caret-right.png</normaloff>:/16x16/icons/16x16/cil-caret-right.png</iconset>
+             <normaloff>:/20x20/icons/20x20/cil-media-play.png</normaloff>:/20x20/icons/20x20/cil-media-play.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
            </property>
           </widget>
          </item>

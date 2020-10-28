@@ -14,6 +14,10 @@ Timer::Timer(QWidget *parent)
 	//TitleBar
 	connect(ui->Btn_close, &QPushButton::clicked, [this]() {this->close(); });
 
+	//MainButton
+	QFont font("Segoe UI");
+	ui->label->setFont(font);
+
 	//CircularProgressBar
 	CircularProgressBarSS_ING = CircularProgressBarSS;
 	CircularProgressBarSS_ING.replace(QString("{STOP_1}"), QString::number(progress));
