@@ -16,3 +16,4 @@
 #include <QDebug>
 #include <QProgressbar.h>
 #include <QFontDatabase.h>
+#include <QMouseEvent>

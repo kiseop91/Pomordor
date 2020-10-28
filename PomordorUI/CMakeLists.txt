@@ -34,12 +34,14 @@ set(project_headers
     src/Popup.h
     src/pompch.h
 	src/Timer/Timer.h
+	src/Timer/Titlebar.h
 )
 
 set(project_sources 
     src/main.cpp
     src/MainWindow/mainwindow.cpp
 	src/Timer/Timer.cpp
+	src/Timer/Titlebar.cpp
     src/Popup.cpp
     src/pompch.cpp
 )

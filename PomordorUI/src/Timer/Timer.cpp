@@ -61,27 +61,6 @@ void Timer::OnRunning()
 	ui->CircularProgress->setStyleSheet(CircularProgressBarSS_ING);
 }
 
-void mouseMove()
-{
-	//if (this->isMaximized() == true)
-	//	return;
-	//
-	//if (mouse->button() == Qt::RightButton)
-	//	return;
-	//
-	//mouseX = QCursor::pos().x();
-	//mouseY = QCursor::pos().y();
-	//
-	//if (justOneCount == 0)
-	//{
-	//	absX = mouse->pos().x() + 7;
-	//	absY = mouse->pos().y() + 7;
-	//	justOneCount++;
-	//}
-	//
-	//this->move(mouseX - absX, mouseY - absY);
-}
-
 Timer::~Timer()
 {
 	delete timer;
