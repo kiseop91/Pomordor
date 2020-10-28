@@ -5,6 +5,7 @@
 #include <QPropertyAnimation>
 #include <QMouseEvent>
 
+#include "Timer.h"
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -16,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
 	QObject::connect(ui->Btn_close, SIGNAL(clicked()), this, SLOT(onClickCloseButton()));
 	QObject::connect(ui->Btn_maximaize, SIGNAL(clicked()), this, SLOT(onClickMaximizeButton()));
 	QObject::connect(ui->Btn_minimaize, SIGNAL(clicked()), this, SLOT(onClickMinimizeButton()));
+	QObject::connect(ui->Btn_Menu_3, SIGNAL(clicked()), this, SLOT(tt()));
 
 	setWindowFlags(Qt::FramelessWindowHint);
 	setAttribute(Qt::WA_TranslucentBackground);
@@ -26,6 +28,43 @@ MainWindow::MainWindow(QWidget *parent)
 	mouseY = this->geometry().y();
 	absY = this->geometry().y();
 	absX = this->geometry().x();
+}
+
+void MainWindow::tt()
+{
+	Timer* timer = new Timer;
+	timer->show();
+	/*QWidget* widget=  new QWidget;
+
+	widget->setGeometry(QRect(300, 300, 500, 500));
+
+	std::cout << "Timer";
+
+	QProgressBar* progress = new QProgressBar(widget);
+	progress->setGeometry(QRect(100, 150, 200, 50));
+
+	QTimer* timer = new QTimer;
+	connect(timer, &QTimer::timeout, [progress]() {
+		static int v = 0;
+
+		if (v < 100)
+		{
+			v++;
+		}
+		else
+		{
+			v = 0;
+		}
+		progress->setValue(v);
+	});
+	timer->start(100);
+
+	widget->show();*/
+
+}
+
+void MainWindow::pormTimer()
+{
 }
 
 void MainWindow::onClickPushButton()
@@ -122,5 +161,17 @@ void MainWindow::mouseMoveEvent(QMouseEvent *mouse)
 void MainWindow::mouseReleaseEvent(QMouseEvent *)
 {
 	justOneCount = 0;
+}
+
+void MainWindow::paintEvent(QPaintEvent * e)
+{
+	QPainter painter(this);
+	QRect rect(10, 10, 200, 200);
+
+	QLinearGradient grad(25, 100, 150, 175);
+	grad.setColorAt(0.0, Qt::black);
+
+	painter.fillRect(rect, Qt::GlobalColor::black);
+	//painter.drawLine(QLine(10, 10, 50, 50));
 }
 

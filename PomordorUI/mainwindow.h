@@ -18,6 +18,10 @@ private slots:
 	void onClickCloseButton();
 	void onClickMaximizeButton();
 	void onClickMinimizeButton();
+	void tt();
+
+	void pormTimer();
+
 private:
     Ui::MainWindow *ui;
 
@@ -29,6 +33,9 @@ private:
 
 	void mouseMoveEvent(QMouseEvent *mouse);
 	void mouseReleaseEvent(QMouseEvent *); 
+
+protected:
+	void paintEvent(QPaintEvent* e) override;
 
 };
 

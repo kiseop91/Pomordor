@@ -25,13 +25,15 @@ endif(MSVC)
 find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
 
 set(project_ui
-    mainwindow.ui    
+    mainwindow.ui
+	Timer.ui
 )
 
 set(project_headers
     mainwindow.h
     Popup.h
     pompch.h
+	Timer.h
 )
 
 set(project_sources 
@@ -39,6 +41,7 @@ set(project_sources
     mainwindow.cpp
     Popup.cpp
     pompch.cpp
+	Timer.cpp
 )
 
 qt5_wrap_ui(project_headers_wrapped ${project_ui})

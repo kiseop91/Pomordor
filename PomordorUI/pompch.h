@@ -14,3 +14,4 @@
 #include <QPainter>
 #include <QDesktopWidget>
 #include <QDebug>
+#include <QProgressbar.h>
