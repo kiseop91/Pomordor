@@ -34,33 +34,6 @@ void MainWindow::tt()
 {
 	Timer* timer = new Timer;
 	timer->show();
-	/*QWidget* widget=  new QWidget;
-
-	widget->setGeometry(QRect(300, 300, 500, 500));
-
-	std::cout << "Timer";
-
-	QProgressBar* progress = new QProgressBar(widget);
-	progress->setGeometry(QRect(100, 150, 200, 50));
-
-	QTimer* timer = new QTimer;
-	connect(timer, &QTimer::timeout, [progress]() {
-		static int v = 0;
-
-		if (v < 100)
-		{
-			v++;
-		}
-		else
-		{
-			v = 0;
-		}
-		progress->setValue(v);
-	});
-	timer->start(100);
-
-	widget->show();*/
-
 }
 
 void MainWindow::pormTimer()

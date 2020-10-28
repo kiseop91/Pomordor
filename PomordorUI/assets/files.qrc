@@ -1,4 +1,8 @@
 <RCC>
+  <qresource prefix ="font">
+    <file>fonts/segoeui.ttf</file>
+    <file>fonts/segoeuib.ttf</file>
+  </qresource>
   <qresource prefix="16x16">
     <file>icons/16x16/cil-arrow-bottom.png</file>
     <file>icons/16x16/cil-arrow-top.png</file>

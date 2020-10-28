@@ -15,3 +15,4 @@
 #include <QDesktopWidget>
 #include <QDebug>
 #include <QProgressbar.h>
+#include <QFontDatabase.h>

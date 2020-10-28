@@ -6,62 +6,84 @@
 Timer::Timer(QWidget *parent)
 	: QWidget(parent)
 	, ui(new Ui::Timer)
+	, timer(new QTimer(this))
 {
 	ui->setupUi(this);
 	setWindowFlags(Qt::FramelessWindowHint);
 	
-	styleSheet = "QWidget{\n"
-		"   border-radius: 100px;\n"
-		"   background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:{STOP_1} rgba(255, 255, 255, 0), stop:{STOP_2} rgba(85, 170, 255, 255));\n"
-		"}";
-	QString temp = styleSheet;
-	temp.replace(QString("{STOP_1}"), QString::number(progress));
-	temp.replace(QString("{STOP_2}"), QString::number(stop));
-
-	ui->CircularProgress->setStyleSheet(temp);
-
-	QTimer* timer = new QTimer(this);
-
-	connect(ui->pushButton, &QPushButton::clicked, [this, timer]() {
-		if (isRunning)
-		{
-			isRunning = false;
-		}
-		else
-		{
-			progress = 1.0f;
-			isRunning = true;
-		}
-		timer->start(8);
-	});
-
-	connect(timer, &QTimer::timeout, [this, timer]() {
-		progress -= 0.001f;
-		stop = progress + 0.0001f;
-
-		if (progress < 0.0f)
-		{
-			this->isRunning = false;
-		}
-
-		if (!isRunning)
-		{
-			progress = 0.0f;
-			stop = 0.0f;
-			timer->stop();
-		}
-
-		QString temp = styleSheet;
-		temp.replace(QString("{STOP_1}"), QString::number(progress));
-		temp.replace(QString("{STOP_2}"), QString::number(stop));
-
-		ui->CircularProgress->setStyleSheet(temp);
-	});
-
+	//TitleBar
 	connect(ui->Btn_close, &QPushButton::clicked, [this]() {this->close(); });
+
+	//CircularProgressBar
+	CircularProgressBarSS_ING = CircularProgressBarSS;
+	CircularProgressBarSS_ING.replace(QString("{STOP_1}"), QString::number(progress));
+	CircularProgressBarSS_ING.replace(QString("{STOP_2}"), QString::number(stop));
+	ui->CircularProgress->setStyleSheet(CircularProgressBarSS_ING);
+
+	connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(OnClick()));
+	connect(timer, SIGNAL(timeout()), this, SLOT(OnRunning()));
 }
 
+void Timer::OnClick()
+{
+	if (isRunning)
+	{
+		isRunning = false;
+	}
+	else
+	{
+		isRunning = true;
+		progress = 1.0f;
+	}
+	timer->start(8);
+}
+
+void Timer::OnRunning()
+{
+	progress -= 0.001f;
+	stop = progress + 0.0001f;
+
+	if (progress < 0.0f)
+	{
+		this->isRunning = false;
+	}
+
+	if (!isRunning)
+	{
+		progress = 0.999f;
+		stop = 0.9991f;
+		timer->stop();
+	}
+
+	CircularProgressBarSS_ING = CircularProgressBarSS;
+	CircularProgressBarSS_ING.replace(QString("{STOP_1}"), QString::number(progress));
+	CircularProgressBarSS_ING.replace(QString("{STOP_2}"), QString::number(stop));
+	ui->CircularProgress->setStyleSheet(CircularProgressBarSS_ING);
+}
+
+void mouseMove()
+{
+	//if (this->isMaximized() == true)
+	//	return;
+	//
+	//if (mouse->button() == Qt::RightButton)
+	//	return;
+	//
+	//mouseX = QCursor::pos().x();
+	//mouseY = QCursor::pos().y();
+	//
+	//if (justOneCount == 0)
+	//{
+	//	absX = mouse->pos().x() + 7;
+	//	absY = mouse->pos().y() + 7;
+	//	justOneCount++;
+	//}
+	//
+	//this->move(mouseX - absX, mouseY - absY);
+}
 
 Timer::~Timer()
 {
+	delete timer;
+	delete ui;
 }

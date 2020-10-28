@@ -13,15 +13,22 @@ public:
 	~Timer();
 
 private slots:
-	//void Start();
+	void OnClick();
+	void OnRunning();
+	
+private:
+	Ui::Timer* ui;
+	QTimer* timer;
 
-public:
-	bool isRunning = false;
-	QString styleSheet;
+	QString CircularProgressBarSS =
+		"QWidget{\n"
+		"   border-radius: 135px;\n"
+		"   background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:{STOP_1} rgba(255, 255, 255, 0), stop:{STOP_2} rgba(227, 183, 177, 255));\n"
+		"}";
+	QString CircularProgressBarSS_ING;
 
 private:
-	Ui::Timer *ui;
-
-	float progress = 0.99f;
-	float stop = 0.991f;
+	bool isRunning = false;
+	float progress = 0.999f;
+	float stop = 0.9991f;
 };
