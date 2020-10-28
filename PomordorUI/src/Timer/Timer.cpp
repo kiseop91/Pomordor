@@ -14,14 +14,15 @@ Timer::Timer(QWidget *parent)
 	//TitleBar
 	connect(ui->Btn_close, &QPushButton::clicked, [this]() {this->close(); });
 
-	//MainButton
+	//clock text
 	QFont font("Segoe UI");
+	ui->label->setText(defaultTime);
 	ui->label->setFont(font);
 
 	//CircularProgressBar
 	CircularProgressBarSS_ING = CircularProgressBarSS;
-	CircularProgressBarSS_ING.replace(QString("{STOP_1}"), QString::number(progress));
-	CircularProgressBarSS_ING.replace(QString("{STOP_2}"), QString::number(stop));
+	CircularProgressBarSS_ING.replace(QString("{GradPoint_1}"), QString::number(0.999f));
+	CircularProgressBarSS_ING.replace(QString("{GradPoint_2}"), QString::number(0.9991f));
 	ui->CircularProgress->setStyleSheet(CircularProgressBarSS_ING);
 
 	connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(OnClick()));
@@ -37,31 +38,32 @@ void Timer::OnClick()
 	else
 	{
 		isRunning = true;
-		progress = 1.0f;
+		clock.Start(ui->label->text().toStdString());
 	}
-	timer->start(8);
+	timer->start(16);
 }
 
 void Timer::OnRunning()
 {
-	progress -= 0.001f;
-	stop = progress + 0.0001f;
+	clock.Update();
 
-	if (progress < 0.0f)
-	{
-		this->isRunning = false;
-	}
+	auto GradPoint1 = clock.GetRemainRatio();
+	auto GradPoint2 = GradPoint1 + 0.0001f;
+	ui->label->setText(QString::fromStdString(clock.GetStrRemainTime()));
 
-	if (!isRunning)
+	if (!clock.isRunning() || !isRunning)
 	{
-		progress = 0.999f;
-		stop = 0.9991f;
+		isRunning = false;
+		GradPoint1 = 0.999f;
+		GradPoint2 = 0.9991f;
 		timer->stop();
+		clock.Stop();
+		ui->label->setText(defaultTime);
 	}
 
 	CircularProgressBarSS_ING = CircularProgressBarSS;
-	CircularProgressBarSS_ING.replace(QString("{STOP_1}"), QString::number(progress));
-	CircularProgressBarSS_ING.replace(QString("{STOP_2}"), QString::number(stop));
+	CircularProgressBarSS_ING.replace(QString("{GradPoint_1}"), QString::number(GradPoint1));
+	CircularProgressBarSS_ING.replace(QString("{GradPoint_2}"), QString::number(GradPoint2));
 	ui->CircularProgress->setStyleSheet(CircularProgressBarSS_ING);
 }
 

@@ -19,16 +19,16 @@ private slots:
 private:
 	Ui::Timer* ui;
 	QTimer* timer;
+	Pome::Clock clock;
 
 	QString CircularProgressBarSS =
 		"QWidget{\n"
 		"   border-radius: 135px;\n"
-		"   background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:{STOP_1} rgba(255, 255, 255, 0), stop:{STOP_2} rgba(227, 183, 177, 255));\n"
+		"   background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:{GradPoint_1} rgba(255, 255, 255, 0), stop:{GradPoint_2} rgba(227, 183, 177, 255));\n"
 		"}";
 	QString CircularProgressBarSS_ING;
+	QString defaultTime = "00 : 30";
 
 private:
 	bool isRunning = false;
-	float progress = 0.999f;
-	float stop = 0.9991f;
 };

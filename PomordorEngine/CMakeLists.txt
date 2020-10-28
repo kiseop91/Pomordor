@@ -11,10 +11,12 @@ set(project_headers
     src/pegpch.h
     src/Pome.h
     src/Util.h
+	src/Clock/Clock.h
 )
 set(project_source 
     src/pegpch.cpp
     src/Util.cpp
+	src/Clock/Clock.cpp
 )
 
 # set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}../vendor/lib)
