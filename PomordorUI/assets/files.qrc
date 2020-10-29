@@ -1,4 +1,7 @@
 <RCC>
+  <qresource prefix ="icon">
+    <file>icons/icon/tomato_tray.png</file>
+  </qresource>
   <qresource prefix ="font">
     <file>fonts/segoeui.ttf</file>
     <file>fonts/segoeuib.ttf</file>

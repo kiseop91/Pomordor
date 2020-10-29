@@ -26,6 +26,7 @@ private:
 	Ui::Timer* ui;
 	QTimer* timer;
 	Prop* prop;
+	QSystemTrayIcon* TrayIcon;
 	Prop::Data propData;			//pormodor, break, sets
 	Pome::Clock EngineClock;
 

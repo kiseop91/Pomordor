@@ -12,8 +12,9 @@
 #include <QGridLayout>
 #include <QTimer>
 #include <QPainter>
-#include <QDesktopWidget>
 #include <QDebug>
-#include <QProgressbar.h>
-#include <QFontDatabase.h>
+#include <QDesktopWidget>
+#include <QProgressbar>
+#include <QFontDatabase>
 #include <QMouseEvent>
+#include <QSystemTrayIcon>

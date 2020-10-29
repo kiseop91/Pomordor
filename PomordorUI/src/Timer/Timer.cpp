@@ -29,6 +29,8 @@ Timer::Timer(QWidget *parent)
 	connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(OnProp()));
 
 	prop = new Prop(this);
+	TrayIcon = new QSystemTrayIcon(QIcon(":/icon/icons/icon/tomato_tray.png"), this);
+	TrayIcon->show();
 }
 
 void Timer::UpdateData()
@@ -88,6 +90,10 @@ void Timer::OnRunning()
 
 	if (!EngineClock.isRunning() || !isRunning)
 	{
+		if (isRunning)
+		{
+			TrayIcon->showMessage("Just one Pormodor done!", "Take a break", QIcon(":/icon/icons/icon/tomato_tray.png"));
+		}
 		isRunning = false;
 		GradPoint1 = 0.999f;
 		GradPoint2 = 0.9991f;
