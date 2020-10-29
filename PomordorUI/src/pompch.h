@@ -18,3 +18,5 @@
 #include <QFontDatabase>
 #include <QMouseEvent>
 #include <QSystemTrayIcon>
+#include <QAction>
+#include <QMenu>

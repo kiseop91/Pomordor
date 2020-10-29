@@ -11,9 +11,6 @@ Timer::Timer(QWidget *parent)
 	ui->setupUi(this);
 	setWindowFlags(Qt::FramelessWindowHint);
 	
-	//TitleBar
-	connect(ui->Btn_close, &QPushButton::clicked, [this]() {this->close(); delete this; });
-
 	//clock text
 	QFont font("Segoe UI");
 	ui->pushButton_2->setFont(font);
@@ -28,9 +25,31 @@ Timer::Timer(QWidget *parent)
 	connect(timer, SIGNAL(timeout()), this, SLOT(OnRunning()));
 	connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(OnProp()));
 
+	//Prop
 	prop = new Prop(this);
+	connect(ui->Btn_close, &QPushButton::clicked, [this]() { hide(); prop->hide(); });
+
+	//Tray Icon
 	TrayIcon = new QSystemTrayIcon(QIcon(":/icon/icons/icon/tomato_tray.png"), this);
 	TrayIcon->show();
+
+	tray_close = new QAction("close");
+	tray_show = new QAction("show");
+	trayMenu = new QMenu(this);
+	trayMenu->addActions({ tray_close, tray_show});
+
+	TrayIcon->setContextMenu(trayMenu);
+	connect(tray_close, &QAction::triggered, [this]() { this->close(); });
+	connect(tray_show, &QAction::triggered, [this]() { if(this->isHidden()) this->show(); });
+	connect(TrayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(TrayIconSlot(QSystemTrayIcon::ActivationReason)));
+}
+
+void Timer::TrayIconSlot(QSystemTrayIcon::ActivationReason Rw)
+{
+	if (Rw != QSystemTrayIcon::DoubleClick)
+		return;
+	if (this->isHidden()) 
+		this->show();
 }
 
 void Timer::UpdateData()
@@ -92,6 +111,7 @@ void Timer::OnRunning()
 	{
 		if (isRunning)
 		{
+			if (isHidden()) show();
 			TrayIcon->showMessage("Just one Pormodor done!", "Take a break", QIcon(":/icon/icons/icon/tomato_tray.png"));
 		}
 		isRunning = false;

@@ -18,7 +18,8 @@ private slots:
 	void OnClick();
 	void OnRunning();
 	void OnProp();
-
+	void TrayIconSlot(QSystemTrayIcon::ActivationReason Rw);
+	
 private:
 	void UpdateData();
 
@@ -26,7 +27,6 @@ private:
 	Ui::Timer* ui;
 	QTimer* timer;
 	Prop* prop;
-	QSystemTrayIcon* TrayIcon;
 	Prop::Data propData;			//pormodor, break, sets
 	Pome::Clock EngineClock;
 
@@ -37,6 +37,13 @@ private:
 		"}";
 	QString CircularProgressBarSS_ING;
 	QString defaultTime = "00 : 00";
+
+	//Tray
+private:
+	QSystemTrayIcon* TrayIcon;
+	QAction* tray_close;
+	QAction* tray_show;
+	QMenu* trayMenu;
 
 private:
 	bool isRunning = false;
