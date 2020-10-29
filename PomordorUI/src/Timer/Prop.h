@@ -22,5 +22,5 @@ private slots:
 
 private:
 	Ui::Prop* ui;
-	Timer* myTimer;
+	Timer* m_MyTimer;
 };

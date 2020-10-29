@@ -75,7 +75,7 @@ namespace Pome {
 		{
 			ret += "0";
 		}
-		ret += minuteStr + " : ";
+		ret += minuteStr + ":";
 		if (sec < 10)
 		{
 			ret += "0";

@@ -4,8 +4,6 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Timer; }
 QT_END_NAMESPACE
 
-#include "Prop.h"
-
 class Timer : public QWidget
 {
 	Q_OBJECT
@@ -15,38 +13,38 @@ public:
 	~Timer();
 
 private slots:
-	void OnClick();
+	void OnStart();
 	void OnRunning();
 	void OnProp();
-	void TrayIconSlot(QSystemTrayIcon::ActivationReason Rw);
-	
+
 private:
-	void UpdateData();
+	void UpdateTimerData();
 
 private:
 	Ui::Timer* ui;
-	QTimer* timer;
-	Prop* prop;
-	Prop::Data propData;			//pormodor, break, sets
-	Pome::Clock EngineClock;
 
-	QString CircularProgressBarSS =
+private:
+	//component
+	QTimer* m_Timer;
+	class Prop* m_PropDialog;
+	class TrayIcon* m_TrayIcon;
+
+private:
+	//Timer
+	Pome::Clock EngineClock;
+	bool isTimerRunning = false;
+
+	QString SSProgress_Porm =
 		"QWidget{\n"
 		"   border-radius: 135px;\n"
 		"   background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:{GradPoint_1} rgba(255, 255, 255, 0), stop:{GradPoint_2} rgba(255, 135, 135, 255));\n"
 		"}";
-	QString CircularProgressBarSS_ING;
-	QString defaultTime = "00 : 00";
-
-	//Tray
-private:
-	QSystemTrayIcon* TrayIcon;
-	QAction* tray_close;
-	QAction* tray_show;
-	QMenu* trayMenu;
-
-private:
-	bool isRunning = false;
+	QString SSProgress_Break = 
+		"QWidget{\n"
+		"   border-radius: 135px;\n"
+		"   background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:{GradPoint_1} rgba(255, 255, 255, 0), stop:{GradPoint_2} rgba(255, 135, 135, 255));\n"
+		"}";
+	QString SSProgress;
 
 	friend class Prop;
 };

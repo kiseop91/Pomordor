@@ -3,100 +3,74 @@
 #include "Timer.h"
 #include "ui_Timer.h"
 
+#include "Prop.h"
+#include "TrayIcon.h"
+
 Timer::Timer(QWidget *parent)
 	: QWidget(parent)
 	, ui(new Ui::Timer)
-	, timer(new QTimer(this))
+	, m_Timer(new QTimer)
+	, m_PropDialog(new Prop(this))
+	, m_TrayIcon(new TrayIcon(QIcon(":/icon/Tomato"), this))
 {
 	ui->setupUi(this);
 	setWindowFlags(Qt::FramelessWindowHint);
-	
-	//clock text
+
+	//TODO : Change Font
 	QFont font("Segoe UI");
-	ui->pushButton_2->setFont(font);
+	ui->TimerButton->setFont(font);
 
-	//CircularProgressBar
-	CircularProgressBarSS_ING = CircularProgressBarSS;
-	CircularProgressBarSS_ING.replace(QString("{GradPoint_1}"), QString::number(0.999f));
-	CircularProgressBarSS_ING.replace(QString("{GradPoint_2}"), QString::number(0.9991f));
-	ui->CircularProgress->setStyleSheet(CircularProgressBarSS_ING);
+	connect(ui->PlayButton, SIGNAL(clicked()), this, SLOT(OnStart()));
+	connect(ui->TimerButton, SIGNAL(clicked()), this, SLOT(OnProp()));
+	connect(ui->Title_Close, &QPushButton::clicked, [this]() { hide(); m_PropDialog->hide(); });
 
-	connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(OnClick()));
-	connect(timer, SIGNAL(timeout()), this, SLOT(OnRunning()));
-	connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(OnProp()));
-
-	//Prop
-	prop = new Prop(this);
-	connect(ui->Btn_close, &QPushButton::clicked, [this]() { hide(); prop->hide(); });
-
-	//Tray Icon
-	TrayIcon = new QSystemTrayIcon(QIcon(":/icon/icons/icon/tomato_tray.png"), this);
-	TrayIcon->show();
-
-	tray_close = new QAction("close");
-	tray_show = new QAction("show");
-	trayMenu = new QMenu(this);
-	trayMenu->addActions({ tray_close, tray_show});
-
-	TrayIcon->setContextMenu(trayMenu);
-	connect(tray_close, &QAction::triggered, [this]() { this->close(); });
-	connect(tray_show, &QAction::triggered, [this]() { if(this->isHidden()) this->show(); });
-	connect(TrayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(TrayIconSlot(QSystemTrayIcon::ActivationReason)));
+	connect(m_Timer, SIGNAL(timeout()), this, SLOT(OnRunning()));
 }
 
-void Timer::TrayIconSlot(QSystemTrayIcon::ActivationReason Rw)
+void Timer::UpdateTimerData()
 {
-	if (Rw != QSystemTrayIcon::DoubleClick)
-		return;
-	if (this->isHidden()) 
-		this->show();
-}
-
-void Timer::UpdateData()
-{
-	propData = prop->GetData();
+	auto[pormTime, breakTime, NumSets] = m_PropDialog->GetData();
 	QString str;
-	int minute = std::get<0>(propData);
-	if (minute < 10)
+	if (pormTime < 10)
 	{
 		str += '0';
 	}
-	str += QString::number(minute) + " : 00";
-	ui->pushButton_2->setText(str);
+	str += QString::number(pormTime) + ":00";
+	ui->TimerButton->setText(str);
 }
 
 void Timer::OnProp()
 {
-	if (prop->isHidden())
+	if (m_PropDialog->isHidden())
 	{		
-		if (isRunning)
+		if (isTimerRunning)
 			return;
-		UpdateData();
-		prop->move(geometry().right() + 1, geometry().top() + 30);
-		prop->show();
+		UpdateTimerData();
+		m_PropDialog->move(geometry().right() + 1, geometry().top() + 30);
+		m_PropDialog->show();
 	}
 	else
 	{
-		UpdateData();
-		prop->hide();
+		UpdateTimerData();
+		m_PropDialog->hide();
 	}
 }
 
-void Timer::OnClick()
+void Timer::OnStart()
 {
-	if (isRunning)
+	if (isTimerRunning)
 	{
-		isRunning = false;
-		ui->pushButton->setIcon(QIcon(":/20x20/icons/20x20/cil-media-play.png"));
+		isTimerRunning = false;
+		ui->PlayButton->setIcon(QIcon(":/20x20/icons/20x20/cil-media-play.png"));
 	}
 	else
 	{
-		isRunning = true;
+		isTimerRunning = true;
 		OnProp();
-		ui->pushButton->setIcon(QIcon(":/20x20/icons/20x20/cil-media-stop.png"));
-		EngineClock.Start(ui->pushButton_2->text().toStdString());
+		ui->PlayButton->setIcon(QIcon(":/20x20/icons/20x20/cil-media-stop.png"));
+		EngineClock.Start(ui->TimerButton->text().toStdString());
 	}
-	timer->start(16);
+	m_Timer->start(16);
 }
 
 void Timer::OnRunning()
@@ -105,33 +79,34 @@ void Timer::OnRunning()
 
 	auto GradPoint1 = EngineClock.GetRemainRatio();
 	auto GradPoint2 = GradPoint1 + 0.0001f;
-	ui->pushButton_2->setText(QString::fromStdString(EngineClock.GetStrRemainTime()));
+	ui->TimerButton->setText(QString::fromStdString(EngineClock.GetStrRemainTime()));
 
-	if (!EngineClock.isRunning() || !isRunning)
+	if (!EngineClock.isRunning() || !isTimerRunning)
 	{
-		if (isRunning)
+		if (isTimerRunning)
 		{
 			if (isHidden()) show();
-			TrayIcon->showMessage("Just one Pormodor done!", "Take a break", QIcon(":/icon/icons/icon/tomato_tray.png"));
+			m_TrayIcon->showMessage("Just one Pormodor done!", "Take a break", QIcon(":/icon/Tomato"));
 		}
-		isRunning = false;
+		isTimerRunning = false;
 		GradPoint1 = 0.999f;
 		GradPoint2 = 0.9991f;
-		timer->stop();
+		m_Timer->stop();
 		EngineClock.Stop();
-		ui->pushButton_2->setText(defaultTime);
-		ui->pushButton->setIcon(QIcon(":/20x20/icons/20x20/cil-media-play.png"));
+		ui->TimerButton->setText("00:00");
+		ui->PlayButton->setIcon(QIcon(":/20x20/icons/20x20/cil-media-play.png"));
 	}
 
-	CircularProgressBarSS_ING = CircularProgressBarSS;
-	CircularProgressBarSS_ING.replace(QString("{GradPoint_1}"), QString::number(GradPoint1));
-	CircularProgressBarSS_ING.replace(QString("{GradPoint_2}"), QString::number(GradPoint2));
-	ui->CircularProgress->setStyleSheet(CircularProgressBarSS_ING);
+	SSProgress = SSProgress_Porm;
+	SSProgress.replace(QString("{GradPoint_1}"), QString::number(GradPoint1));
+	SSProgress.replace(QString("{GradPoint_2}"), QString::number(GradPoint2));
+	ui->Progress_Front->setStyleSheet(SSProgress);
 }
 
 Timer::~Timer()
 {
-	delete timer;
+	delete m_TrayIcon;
+	delete m_PropDialog;
+	delete m_Timer;
 	delete ui;
-	delete prop;
 }

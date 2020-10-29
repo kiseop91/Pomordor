@@ -7,7 +7,7 @@
 Prop::Prop(Timer* timer, QWidget* parent)
 	: QWidget(parent)
 	, ui(new Ui::Prop)
-	, myTimer(timer)
+	, m_MyTimer(timer)
 {
 	setWindowFlags(Qt::FramelessWindowHint);
 	ui->setupUi(this);
@@ -31,7 +31,7 @@ Prop::Prop(Timer* timer, QWidget* parent)
 
 void Prop::OnClose()
 {
-	myTimer->UpdateData();
+	m_MyTimer->UpdateTimerData();
 	this->hide();
 }
 

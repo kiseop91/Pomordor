@@ -48,7 +48,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="TitleBar" name="frame">
+    <widget class="TitleBar" name="TitleBarFrame">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -83,7 +83,7 @@
        <number>0</number>
       </property>
       <item>
-       <widget class="QPushButton" name="Btn_menu">
+       <widget class="QPushButton" name="Title_Menu">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -126,7 +126,7 @@ QPushButton:Hover{
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer">
+       <spacer name="Title_HSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -139,7 +139,7 @@ QPushButton:Hover{
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="Btn_minimal">
+       <widget class="QPushButton" name="Title_Minimul">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -182,7 +182,7 @@ QPushButton:Hover{
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="Btn_close">
+       <widget class="QPushButton" name="Title_Close">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>
@@ -228,7 +228,7 @@ QPushButton:Hover{
     </widget>
    </item>
    <item>
-    <widget class="QFrame" name="frame_2">
+    <widget class="QFrame" name="CentralWidget">
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
@@ -240,14 +240,14 @@ QPushButton:Hover{
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QFrame" name="frame_5">
+       <widget class="QFrame" name="TimerFrame">
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Plain</enum>
         </property>
-        <widget class="QWidget" name="CircularProgress" native="true">
+        <widget class="QWidget" name="Progress_Front" native="true">
          <property name="geometry">
           <rect>
            <x>32</x>
@@ -274,7 +274,7 @@ QPushButton:Hover{
    background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:0.999 rgba(255, 255, 255, 0), stop:0.9991 rgba(227, 183, 177, 255));
 }</string>
          </property>
-         <widget class="QPushButton" name="pushButton_2">
+         <widget class="QPushButton" name="TimerButton">
           <property name="geometry">
            <rect>
             <x>5</x>
@@ -318,7 +318,7 @@ QPushButton:Click{
           </property>
          </widget>
         </widget>
-        <widget class="QWidget" name="CircularProgress_2" native="true">
+        <widget class="QWidget" name="Progress_Back" native="true">
          <property name="geometry">
           <rect>
            <x>32</x>
@@ -346,12 +346,12 @@ QPushButton:Click{
 }</string>
          </property>
         </widget>
-        <zorder>CircularProgress_2</zorder>
-        <zorder>CircularProgress</zorder>
+        <zorder>Progress_Back</zorder>
+        <zorder>Progress_Front</zorder>
        </widget>
       </item>
       <item>
-       <widget class="QFrame" name="frame_6">
+       <widget class="QFrame" name="ButtonFrame">
         <property name="maximumSize">
          <size>
           <width>16777215</width>
@@ -381,7 +381,7 @@ QPushButton:Click{
           <number>0</number>
          </property>
          <item>
-          <spacer name="horizontalSpacer_2">
+          <spacer name="Play_HLSpacer">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -394,7 +394,7 @@ QPushButton:Click{
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="PlayButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -439,7 +439,7 @@ QPushButton:Hover{
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_3">
+          <spacer name="Play_HRSpacer">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -458,7 +458,7 @@ QPushButton:Hover{
     </widget>
    </item>
    <item>
-    <widget class="QFrame" name="frame_3">
+    <widget class="QFrame" name="Empty">
      <property name="maximumSize">
       <size>
        <width>16777215</width>
@@ -482,7 +482,7 @@ QPushButton:Hover{
   <customwidget>
    <class>TitleBar</class>
    <extends>QFrame</extends>
-   <header>titlebar.h</header>
+   <header>Timer/TitleBar.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
