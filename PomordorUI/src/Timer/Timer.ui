@@ -57,7 +57,7 @@
      </property>
      <property name="styleSheet">
       <string notr="true">QFrame{
-	background-color: rgb(235, 206, 203);
+	background-color: rgb(255, 135, 135);
 }</string>
      </property>
      <property name="frameShape">
@@ -300,10 +300,18 @@ QPushButton:Hover{
 	border:none;
 	border-radius:130px;
 	background-color: rgb(255, 255, 255);
+	color :  rgb(255, 135, 135);
+	font-size : 60px;
+	font-weight : 100;
+}
+QPushButton:Click{
+
+	border:none
+
 }</string>
           </property>
           <property name="text">
-           <string/>
+           <string>00 : 00</string>
           </property>
           <property name="flat">
            <bool>true</bool>
@@ -338,39 +346,8 @@ QPushButton:Hover{
 }</string>
          </property>
         </widget>
-        <widget class="QLabel" name="label">
-         <property name="geometry">
-          <rect>
-           <x>0</x>
-           <y>140</y>
-           <width>332</width>
-           <height>70</height>
-          </rect>
-         </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLabel{
-	background-color: rgba(255, 255, 255, 0);
-	color :  rgb(237, 153, 157);
-	font-size : 60px;
-	font-weight : 100;
-}</string>
-         </property>
-         <property name="text">
-          <string>25 : 00</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
         <zorder>CircularProgress_2</zorder>
         <zorder>CircularProgress</zorder>
-        <zorder>label</zorder>
        </widget>
       </item>
       <item>
@@ -440,10 +417,10 @@ QPushButton:Hover{
             <string notr="true">QPushButton{
 	Border:none;
 	border-radius:8px;
-	background-color: rgb(235, 206, 203);
+	background-color: rgb(255, 135, 135);
 }
 QPushButton:Hover{
-	background-color: rgba(255, 0, 0, 120);
+	background-color: rgba(255, 135, 135, 200);
 }</string>
            </property>
            <property name="text">

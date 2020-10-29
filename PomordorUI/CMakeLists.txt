@@ -27,6 +27,7 @@ find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
 set(project_ui
     src/MainWindow/mainwindow.ui
 	src/Timer/Timer.ui
+	src/Timer/Prop.ui
 )
 
 set(project_headers
@@ -34,6 +35,7 @@ set(project_headers
     src/Popup.h
     src/pompch.h
 	src/Timer/Timer.h
+	src/Timer/Prop.h
 	src/Timer/Titlebar.h
 )
 
@@ -41,6 +43,7 @@ set(project_sources
     src/main.cpp
     src/MainWindow/mainwindow.cpp
 	src/Timer/Timer.cpp
+	src/Timer/Prop.cpp
 	src/Timer/Titlebar.cpp
     src/Popup.cpp
     src/pompch.cpp
