@@ -16,13 +16,14 @@ Timer::Timer(QWidget *parent)
 {
 	ui->setupUi(this);
 	setWindowFlags(Qt::FramelessWindowHint);
+	setAttribute(Qt::WA_TranslucentBackground);
+	setAutoFillBackground(true);
 
-	//TODO : Change Font
 	QFont d2code("D2Coding");
 	QFont segoe("Segoe UI");
 	ui->TimerButton->setFont(d2code);
-	//ui->RunningStateLabel->setFont(segoe);
-	//ui->SetCountLabel->setFont(segoe);
+	ui->RunningStateLabel->setFont(segoe);
+	ui->SetCountLabel->setFont(segoe);
 	SetRunningStateUi(RunningState::None);
 
 	UpdateTimerData();
@@ -61,8 +62,8 @@ void Timer::UpdateSetCount()
 	uint32_t setCount = m_SetTotal - (m_ScheduleQue.size() + 1) / 2 + 1;
 	if (m_CurState == RunningState::None)
 		setCount = 0;
-	QString setStr = "SetCount : " + QString::number(setCount) + " / " + QString::number(m_SetTotal);
-	//ui->SetCountLabel->setText(setStr);
+	QString setStr = "Set Count : " + QString::number(setCount) + " / " + QString::number(m_SetTotal);
+	ui->SetCountLabel->setText(setStr);
 }
 
 void Timer::FillProgress(float percentage, RunningState state)
@@ -84,17 +85,23 @@ void Timer::SetRunningStateUi(RunningState state)
 	switch (state)
 	{
 	case Timer::RunningState::Porm:
-		//ui->RunningStateLabel->show();
-		//ui->RunningStateLabel->setText("Pomordor");
-		//ui->RunningStateLabel->setStyleSheet(SSRunningState_Porm);
+		ui->RunningStateLabel->show();
+		ui->RunningStateLabel->setText("Pomordor");
+		ui->RunningStateLabel->setStyleSheet(SSRunningState_Porm);
+		ui->TimerButton->setStyleSheet(SSTimerButton_Porm);
+		ui->Progress_Back->setStyleSheet(SSProgress_Porm_bg);
 		break;
 	case Timer::RunningState::Break:
-		//ui->RunningStateLabel->show();
-		//ui->RunningStateLabel->setText("Break");
-		//ui->RunningStateLabel->setStyleSheet(SSRunningState_Break);
+		ui->RunningStateLabel->show();
+		ui->RunningStateLabel->setText("Break");
+		ui->RunningStateLabel->setStyleSheet(SSRunningState_Break);
+		ui->TimerButton->setStyleSheet(SSTimerButton_Break);
+		ui->Progress_Back->setStyleSheet(SSProgress_Break_bg);
 		break;
 	case Timer::RunningState::None:
-		//ui->RunningStateLabel->hide();
+		ui->RunningStateLabel->hide();
+		ui->TimerButton->setStyleSheet(SSTimerButton_Porm);
+		ui->Progress_Back->setStyleSheet(SSProgress_Porm_bg);
 		break;
 	}
 }
@@ -168,7 +175,6 @@ void Timer::OnRunning()
 			else
 			{
 				m_TrayIcon->showMessage("The break Time done!", "Next Pormordor time start now!", QIcon(":/icon/Tomato"), 3000);
-
 			}
 		}
 		m_ScheduleQue.pop_front();
@@ -176,7 +182,7 @@ void Timer::OnRunning()
 
 		//Check schedule and Set progress
 		if (m_ScheduleQue.empty())
-		{
+		{			
 			OnStop();
 		}
 		else

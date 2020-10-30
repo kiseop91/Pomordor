@@ -227,10 +227,16 @@ QPushButton:Hover{
   <customwidget>
    <class>TitleBar</class>
    <extends>QFrame</extends>
-   <header>titlebar.h</header>
+   <header>Timer/TitleBar.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>spinBox</tabstop>
+  <tabstop>spinBox_2</tabstop>
+  <tabstop>spinBox_3</tabstop>
+  <tabstop>Btn_close</tabstop>
+ </tabstops>
  <resources>
   <include location="../../assets/files.qrc"/>
  </resources>

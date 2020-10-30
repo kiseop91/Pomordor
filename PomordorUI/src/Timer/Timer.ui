@@ -393,8 +393,67 @@ QPushButton:Click{
 }</string>
          </property>
         </widget>
+        <widget class="QLabel" name="RunningStateLabel">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>110</y>
+           <width>332</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>332</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel{
+	font-size : 25px;
+	background-color : none;
+}</string>
+         </property>
+         <property name="text">
+          <string>pomordor</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+        <widget class="QLabel" name="SetCountLabel">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>240</y>
+           <width>332</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>332</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel{
+	font-size : 15px;
+  font-weight : 500;
+	background-color : none;
+}</string>
+         </property>
+         <property name="text">
+          <string>Set Count : 0 / 3</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
         <zorder>Progress_Back</zorder>
         <zorder>Progress_Front</zorder>
+        <zorder>RunningStateLabel</zorder>
+        <zorder>SetCountLabel</zorder>
        </widget>
       </item>
       <item>
