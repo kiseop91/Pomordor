@@ -12,15 +12,20 @@ public:
 	using Data = std::tuple<int, int, int>; //pomordor, break, set
 
 public:
-	ScheduleDialog(class TimerPage* timer, QWidget* parent = nullptr);
+	ScheduleDialog(class TimerPage* page, QWidget* parent = nullptr);
 	~ScheduleDialog();
 
 	Data GetData();
 
 private slots:
 	void OnClose();
+	void onScheduleValueChanged();
+
+	void applyScheduleValue();
 
 private:
 	Ui::ScheduleDialog* ui;
-	TimerPage* m_MyTimer;
+	TimerPage* m_MyPage;
+
+	friend class TimerPage;
 };
