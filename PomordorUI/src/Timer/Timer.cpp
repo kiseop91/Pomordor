@@ -15,9 +15,11 @@ Timer::Timer(QWidget *parent)
 {
 	ui->setupUi(this);
 	setWindowFlags(Qt::FramelessWindowHint);
+	setAttribute(Qt::WA_TranslucentBackground);
+	setAutoFillBackground(true);
 
 	//TODO : Change Font
-	QFont font("Segoe UI");
+	QFont font("D2Coding");
 	ui->TimerButton->setFont(font);
 
 	connect(ui->PlayButton, SIGNAL(clicked()), this, SLOT(OnStart()));
