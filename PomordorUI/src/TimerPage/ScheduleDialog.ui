@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Prop</class>
+ <class>ScheduleDialog</class>
  <widget class="QWidget" name="Prop">
   <property name="geometry">
    <rect>

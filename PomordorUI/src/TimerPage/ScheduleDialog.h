@@ -1,10 +1,10 @@
 #pragma once
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Prop; }
+namespace Ui { class ScheduleDialog; }
 QT_END_NAMESPACE
 
-class Prop : public QWidget
+class ScheduleDialog : public QWidget
 {
 	Q_OBJECT
 
@@ -12,8 +12,8 @@ public:
 	using Data = std::tuple<int, int, int>; //pomordor, break, set
 
 public:
-	Prop(class TimerPage* timer, QWidget* parent = nullptr);
-	~Prop();
+	ScheduleDialog(class TimerPage* timer, QWidget* parent = nullptr);
+	~ScheduleDialog();
 
 	Data GetData();
 
@@ -21,6 +21,6 @@ private slots:
 	void OnClose();
 
 private:
-	Ui::Prop* ui;
+	Ui::ScheduleDialog* ui;
 	TimerPage* m_MyTimer;
 };

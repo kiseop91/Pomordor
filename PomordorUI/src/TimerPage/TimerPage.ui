@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Timer</class>
+ <class>TimerPage</class>
  <widget class="QWidget" name="Timer">
   <property name="geometry">
    <rect>
@@ -399,7 +399,7 @@ QPushButton:Click{
            <x>0</x>
            <y>110</y>
            <width>332</width>
-           <height>30</height>
+           <height>42</height>
           </rect>
          </property>
          <property name="minimumSize">
@@ -592,7 +592,7 @@ QPushButton:Hover{
   <customwidget>
    <class>TitleBar</class>
    <extends>QFrame</extends>
-   <header>Timer/TitleBar.h</header>
+   <header>TimerPage/TitleBar.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

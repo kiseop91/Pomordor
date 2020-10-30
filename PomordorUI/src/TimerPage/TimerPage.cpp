@@ -1,16 +1,16 @@
 #include "pompch.h"
 
-#include "Timer.h"
-#include "ui_Timer.h"
+#include "TimerPage.h"
+#include "ui_TimerPage.h"
 
-#include "Prop.h"
+#include "ScheduleDialog.h"
 #include "TrayIcon.h"
 
 TimerPage::TimerPage(QWidget *parent)
 	: QWidget(parent)
-	, ui(new Ui::Timer)
-	, m_Timer(new QTimer)
-	, m_PropDialog(new Prop(this))
+	, ui(new Ui::TimerPage)
+	, m_Loop(new QTimer)
+	, m_ScheduleDialog(new ScheduleDialog(this))
 	, m_TrayIcon(new TrayIcon(QIcon(":/icon/Tomato"), this))
 	, m_CurState(TimerState::None)
 {
@@ -31,14 +31,14 @@ TimerPage::TimerPage(QWidget *parent)
 	
 	m_PlayButtonConn = connect(ui->PlayButton, SIGNAL(clicked()), SLOT(onStart()));
 	connect(ui->TimerButton, SIGNAL(clicked()), this, SLOT(onProp()));
-	connect(ui->Title_Close, &QPushButton::clicked, [this]() { hide(); m_PropDialog->hide(); });
+	connect(ui->Title_Close, &QPushButton::clicked, [this]() { hide(); m_ScheduleDialog->hide(); });
 	
-	connect(m_Timer, SIGNAL(timeout()), this, SLOT(onRunning()));
+	connect(m_Loop, SIGNAL(timeout()), this, SLOT(onRunning()));
 }
 
 void TimerPage::updateTimerData()
 {
-	auto[pormTime, breakTime, NumSets] = m_PropDialog->GetData();
+	auto[pormTime, breakTime, NumSets] = m_ScheduleDialog->GetData();
 	m_ScheduleQueue.clear();
 	for (auto i = 0; i < NumSets; ++i)
 	{
@@ -107,16 +107,16 @@ void TimerPage::setTimerStateUi(TimerState state)
 
 void TimerPage::onProp()
 {
-	if (m_PropDialog->isHidden())
+	if (m_ScheduleDialog->isHidden())
 	{
 		if (m_CurState != TimerState::None)
 			return;
-		m_PropDialog->move(geometry().right() + 1, geometry().top() + 30);
-		m_PropDialog->show();
+		m_ScheduleDialog->move(geometry().right() + 1, geometry().top() + 30);
+		m_ScheduleDialog->show();
 	}
 	else
 	{
-		m_PropDialog->hide();
+		m_ScheduleDialog->hide();
 	}
 	updateTimerData();
 }
@@ -129,7 +129,7 @@ void TimerPage::onStart()
 	setTimerStateUi(TimerState::Porm);
 	ui->PlayButton->setIcon(QIcon(":/20x20/icons/20x20/cil-media-stop.png"));
 	m_EngineClock.Start(ui->TimerButton->text().toStdString());
-	m_Timer->start(16);
+	m_Loop->start(16);
 
 	disconnect(m_PlayButtonConn);
 	m_PlayButtonConn = connect(ui->PlayButton, SIGNAL(clicked()), SLOT(onStop()));
@@ -144,7 +144,7 @@ void TimerPage::onStop()
 	setTimerStateUi(TimerState::None);
 	ui->PlayButton->setIcon(QIcon(":/20x20/icons/20x20/cil-media-play.png"));
 	m_EngineClock.Stop();
-	m_Timer->stop();
+	m_Loop->stop();
 
 	disconnect(m_PlayButtonConn);
 	m_PlayButtonConn = connect(ui->PlayButton, SIGNAL(clicked()), SLOT(onStart()));
@@ -195,7 +195,7 @@ void TimerPage::onRunning()
 TimerPage::~TimerPage()
 {
 	delete m_TrayIcon;
-	delete m_PropDialog;
-	delete m_Timer;
+	delete m_ScheduleDialog;
+	delete m_Loop;
 	delete ui;
 }

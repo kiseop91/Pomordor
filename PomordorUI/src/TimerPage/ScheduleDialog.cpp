@@ -1,12 +1,12 @@
 #include "pompch.h"
 
-#include "Prop.h"
-#include "ui_Prop.h"
-#include "Timer.h"
+#include "ScheduleDialog.h"
+#include "ui_ScheduleDialog.h"
+#include "TimerPage.h"
 
-Prop::Prop(TimerPage* timer, QWidget* parent)
+ScheduleDialog::ScheduleDialog(TimerPage* timer, QWidget* parent)
 	: QWidget(parent)
-	, ui(new Ui::Prop)
+	, ui(new Ui::ScheduleDialog)
 	, m_MyTimer(timer)
 {
 	setWindowFlags(Qt::FramelessWindowHint);
@@ -37,18 +37,18 @@ Prop::Prop(TimerPage* timer, QWidget* parent)
 
 }
 
-void Prop::OnClose()
+void ScheduleDialog::OnClose()
 {
 	m_MyTimer->updateTimerData();
 	this->hide();
 }
 
-Prop::~Prop()
+ScheduleDialog::~ScheduleDialog()
 {
 	delete ui;
 }
 
-Prop::Data Prop::GetData()
+ScheduleDialog::Data ScheduleDialog::GetData()
 {
 	return { ui->spinBox->value(), ui->spinBox_2->value(), ui->spinBox_3->value() };
 }

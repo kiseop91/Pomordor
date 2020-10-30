@@ -1,5 +1,5 @@
 #include "pompch.h"
-#include "Timer/Timer.h"
+#include "TimerPage/TimerPage.h"
 #include <Windows.h>
 
 int main(int argc, char *argv[])

@@ -1,7 +1,7 @@
 #pragma once
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Timer; }
+namespace Ui { class TimerPage; }
 QT_END_NAMESPACE
 
 class TimerPage : public QWidget
@@ -33,12 +33,12 @@ private:
 	void setTimerStateUi(TimerState state);
 
 private:
-	Ui::Timer* ui;
+	Ui::TimerPage* ui;
 
 private:
 	//component
-	QTimer* m_Timer;
-	class Prop* m_PropDialog;
+	QTimer* m_Loop;
+	class ScheduleDialog* m_ScheduleDialog;
 	class TrayIcon* m_TrayIcon;
 
 private:
@@ -80,5 +80,5 @@ private:
 	QString SSTimerButton_Porm = "QPushButton{border:none; border-radius: 130px; background-color : rgb(240, 240, 240); color: rgb(255, 100, 100); font-size : 60px; font-weight : 100; }";
 	QString SSTimerButton_Break = "QPushButton{border:none; border-radius: 130px; background-color : rgb(240, 240, 240); color: rgb(158, 204, 154); font-size : 60px; font-weight : 100; }";
 
-	friend class Prop;
+	friend class ScheduleDialog;
 };
