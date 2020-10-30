@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.16.2 FATAL_ERROR)
 
 project(Pomordor LANGUAGES CXX)
+add_compile_options(/std:c++17)
 
 find_package(Git QUIET)
 if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
