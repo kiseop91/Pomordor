@@ -31,6 +31,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">border-radius:5px;</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>0</number>
@@ -57,7 +60,12 @@
      </property>
      <property name="styleSheet">
       <string notr="true">QFrame{
-	background-color: rgb(255, 135, 135);
+	background-color: rgb(255, 100, 100);
+}
+
+QFrame{
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;
 }</string>
      </property>
      <property name="frameShape">
@@ -68,7 +76,7 @@
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="spacing">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="leftMargin">
        <number>0</number>
@@ -77,7 +85,7 @@
        <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="bottomMargin">
        <number>0</number>
@@ -139,89 +147,122 @@ QPushButton:Hover{
        </spacer>
       </item>
       <item>
-       <widget class="QPushButton" name="Title_Minimul">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
+       <widget class="QFrame" name="frame_top">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
         </property>
-        <property name="minimumSize">
-         <size>
-          <width>33</width>
-          <height>30</height>
-         </size>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>33</width>
-          <height>30</height>
-         </size>
+        <property name="lineWidth">
+         <number>0</number>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-	border : none;
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <property name="spacing">
+          <number>9</number>
+         </property>
+         <property name="leftMargin">
+          <number>9</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>9</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="Title_Minimul">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+	border: none;
+	border-radius: 8px;
+	background-color:rgb(85,255,127);
 }
-QPushButton:Hover{
-	background-color: rgba(255, 0, 0, 120);
+QPushButton:hover{
+	background-color:rgba(85,255,127,150);
 }</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="../../assets/files.qrc">
-          <normaloff>:/20x20/icons/20x20/cil-window-minimize.png</normaloff>:/20x20/icons/20x20/cil-window-minimize.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>18</width>
-          <height>18</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="Title_Close">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>33</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>40</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton{
-	border : none;
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="Title_Maximal">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+	border: none;
+	border-radius: 8px;
+	background-color:rgb(255,170,0);
 }
-QPushButton:Hover{
-	background-color: rgba(255, 0, 0, 120);
+QPushButton:hover
+{
+	background-color:rgba(255,170,0,150);
 }</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="icon">
-         <iconset resource="../../assets/files.qrc">
-          <normaloff>:/20x20/icons/20x20/cil-x.png</normaloff>:/20x20/icons/20x20/cil-x.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>18</width>
-          <height>18</height>
-         </size>
-        </property>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="Title_Close">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton{
+	border: none;
+	border-radius: 8px;
+	background-color:rgb(255,0,0);
+}
+QPushButton:hover
+{
+	background-color:rgba(255,0,0,150);
+}</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -230,7 +271,13 @@ QPushButton:Hover{
    <item>
     <widget class="QFrame" name="CentralWidget">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true">QFrame{
+	background-color: rgb(240, 240, 240);
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;
+	border-top-left-radius:0px;
+	border-top-right-radius:0px;
+}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
@@ -299,8 +346,8 @@ QPushButton:Hover{
            <string notr="true">QPushButton{
 	border:none;
 	border-radius:130px;
-	background-color: rgb(255, 255, 255);
-	color :  rgb(255, 135, 135);
+	background-color: rgb(240, 240, 240);
+	color :  rgb(255, 100, 100);
 	font-size : 60px;
 	font-weight : 100;
 }
@@ -311,7 +358,7 @@ QPushButton:Click{
 }</string>
           </property>
           <property name="text">
-           <string>00 : 00</string>
+           <string>00:00</string>
           </property>
           <property name="flat">
            <bool>true</bool>
@@ -342,7 +389,7 @@ QPushButton:Click{
          <property name="styleSheet">
           <string notr="true">QWidget{
    border-radius: 134px;
-   background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:0.0 rgba(255, 255, 255, 0), stop:0.0 rgba(217, 215, 201, 255));
+   background-color: qconicalgradient(cx:0.5, cy:0.5, angle:90, stop:0.0 rgba(255, 255, 255, 0), stop:0.0 rgba(217, 10, 20, 30));
 }</string>
          </property>
         </widget>
@@ -417,7 +464,7 @@ QPushButton:Click{
             <string notr="true">QPushButton{
 	Border:none;
 	border-radius:8px;
-	background-color: rgb(255, 135, 135);
+	background-color: rgb(255, 100, 100);
 }
 QPushButton:Hover{
 	background-color: rgba(255, 135, 135, 200);
@@ -466,7 +513,11 @@ QPushButton:Hover{
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true">QFrame{
+	background-color: rgb(240, 240, 240);
+	border-top-left-radius:0px;
+	border-top-right-radius:0px;
+}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::NoFrame</enum>
