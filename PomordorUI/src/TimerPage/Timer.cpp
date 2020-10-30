@@ -28,9 +28,9 @@ void Timer::Start()
 void Timer::Stop()
 {
 	m_CurState = TimerState::None;
-	fillProgress(0.999f);
-
+	
 	setTimerStateUi();
+	fillProgress(0.999f);
 	m_EngineClock.Stop();
 }
 
@@ -114,13 +114,13 @@ void Timer::Update()
 		//Second : Check schedule and exec
 		if (m_ScheduleQueue.empty())
 		{
-			Stop();
+			m_MyPage->timerFinish();
 		}
 		else
 		{
 			m_CurState = m_ScheduleQueue.begin()->first;
-			m_EngineClock.Start(0, m_ScheduleQueue.begin()->second, 0);
 			setTimerStateUi();
+			m_EngineClock.Start(0, m_ScheduleQueue.begin()->second, 0);
 		}
 	}
 }

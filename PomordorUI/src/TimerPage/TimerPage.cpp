@@ -44,6 +44,7 @@ TimerPage::~TimerPage()
 	delete m_TrayIcon;
 	delete m_ScheduleDialog;
 	delete m_Loop;
+	delete m_Timer;
 	delete ui;
 }
 
@@ -75,6 +76,11 @@ void TimerPage::onTimerStart()
 }
 
 void TimerPage::onTimerStop()
+{
+	timerFinish();
+}
+
+void TimerPage::timerFinish()
 {
 	m_Timer->Stop();
 	m_Loop->stop();

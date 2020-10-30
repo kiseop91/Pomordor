@@ -15,6 +15,9 @@ public:
 public:
 	void ToastMessage(const QString& title, const QString& text, int duration_ms);
 
+private:
+	void timerFinish();
+
 private slots:
 	void onTimerStart();
 	void onTimerStop();
