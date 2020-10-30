@@ -4,7 +4,7 @@
 #include "ui_Prop.h"
 #include "Timer.h"
 
-Prop::Prop(Timer* timer, QWidget* parent)
+Prop::Prop(TimerPage* timer, QWidget* parent)
 	: QWidget(parent)
 	, ui(new Ui::Prop)
 	, m_MyTimer(timer)
@@ -39,7 +39,7 @@ Prop::Prop(Timer* timer, QWidget* parent)
 
 void Prop::OnClose()
 {
-	m_MyTimer->UpdateTimerData();
+	m_MyTimer->updateTimerData();
 	this->hide();
 }
 

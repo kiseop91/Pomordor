@@ -393,7 +393,7 @@ QPushButton:Click{
 }</string>
          </property>
         </widget>
-        <widget class="QLabel" name="RunningStateLabel">
+        <widget class="QLabel" name="TimerStateLabel">
          <property name="geometry">
           <rect>
            <x>0</x>
@@ -405,7 +405,7 @@ QPushButton:Click{
          <property name="minimumSize">
           <size>
            <width>332</width>
-           <height>30</height>
+           <height>42</height>
           </size>
          </property>
          <property name="styleSheet">
@@ -452,8 +452,8 @@ QPushButton:Click{
         </widget>
         <zorder>Progress_Back</zorder>
         <zorder>Progress_Front</zorder>
-        <zorder>RunningStateLabel</zorder>
         <zorder>SetCountLabel</zorder>
+        <zorder>TimerStateLabel</zorder>
        </widget>
       </item>
       <item>

@@ -4,12 +4,12 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class Timer; }
 QT_END_NAMESPACE
 
-class Timer : public QWidget
+class TimerPage : public QWidget
 {
 	Q_OBJECT
 
 public:
-	enum class RunningState
+	enum class TimerState
 	{
 		Porm,
 		Break,
@@ -17,20 +17,20 @@ public:
 	};
 
 public:
-	Timer(QWidget *parent = nullptr);
-	~Timer();
+	TimerPage(QWidget *parent = nullptr);
+	~TimerPage();
 
 private slots:
-	void OnStart();
-	void OnStop();
-	void OnRunning();
-	void OnProp();
+	void onStart();
+	void onStop();
+	void onRunning();
+	void onProp();
 
 private:
-	void UpdateTimerData();
-	void UpdateSetCount();
-	void FillProgress(float percentage, RunningState state);
-	void SetRunningStateUi(RunningState state);
+	void updateTimerData();
+	void updateSetCount();
+	void fillProgress(float percentage, TimerState state);
+	void setTimerStateUi(TimerState state);
 
 private:
 	Ui::Timer* ui;
@@ -44,11 +44,11 @@ private:
 private:
 	//Timer
 	Pome::Clock m_EngineClock;
-	RunningState m_CurState;
+	TimerState m_CurState;
 	QMetaObject::Connection m_PlayButtonConn;
 
 	uint32_t m_SetTotal = 0;
-	std::list<std::pair<RunningState, uint32_t>> m_ScheduleQue;
+	std::list<std::pair<TimerState, uint32_t>> m_ScheduleQueue;
 
 	QString SSProgress_Porm =
 		"QWidget{\n"
@@ -74,8 +74,8 @@ private:
 
 	QString SSProgress;
 
-	QString SSRunningState_Porm = "QWidget{ background-color : none; } QLabel{ color: rgb(255, 135, 135); font-size : 30px }";
-	QString SSRunningState_Break = "QWidget{ background-color : none; } QLabel{ color: rgb(158, 184, 154); font-size : 30px }";
+	QString SSTimerState_Porm = "QWidget{ background-color : none; } QLabel{ color: rgb(255, 135, 135); font-size : 30px }";
+	QString SSTimerState_Break = "QWidget{ background-color : none; } QLabel{ color: rgb(158, 184, 154); font-size : 30px }";
 
 	QString SSTimerButton_Porm = "QPushButton{border:none; border-radius: 130px; background-color : rgb(240, 240, 240); color: rgb(255, 100, 100); font-size : 60px; font-weight : 100; }";
 	QString SSTimerButton_Break = "QPushButton{border:none; border-radius: 130px; background-color : rgb(240, 240, 240); color: rgb(158, 204, 154); font-size : 60px; font-weight : 100; }";

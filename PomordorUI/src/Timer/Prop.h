@@ -12,7 +12,7 @@ public:
 	using Data = std::tuple<int, int, int>; //pomordor, break, set
 
 public:
-	Prop(class Timer* timer, QWidget* parent = nullptr);
+	Prop(class TimerPage* timer, QWidget* parent = nullptr);
 	~Prop();
 
 	Data GetData();
@@ -22,5 +22,5 @@ private slots:
 
 private:
 	Ui::Prop* ui;
-	Timer* m_MyTimer;
+	TimerPage* m_MyTimer;
 };
