@@ -1,9 +1,9 @@
 #include "pompch.h"
 
 #include "TrayIcon.h"
-#include "Timer.h"
+#include "TimerPage.h"
 
-TrayIcon::TrayIcon(const QIcon& icon, Timer * myTimer, QWidget * parent)
+TrayIcon::TrayIcon(const QIcon& icon, TimerPage* myTimer, QWidget * parent)
 	: QSystemTrayIcon(icon, parent)
 	, m_MyTimer(myTimer)
 	, m_Menu(new QMenu)

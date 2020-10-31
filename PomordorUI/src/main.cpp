@@ -1,5 +1,5 @@
 #include "pompch.h"
-#include "Timer/Timer.h"
+#include "TimerPage/TimerPage.h"
 #include <Windows.h>
 
 int main(int argc, char *argv[])
@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 	QFontDatabase::addApplicationFont(":/font/fonts/segoeui.ttf");
 	QFontDatabase::addApplicationFont(":/font/fonts/D2Coding.ttf");
 
-    Timer t;
+    TimerPage t;
     t.show();
 
     return a.exec();

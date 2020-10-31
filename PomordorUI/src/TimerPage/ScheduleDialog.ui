@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Prop</class>
- <widget class="QWidget" name="Prop">
+ <class>ScheduleDialog</class>
+ <widget class="QWidget" name="ScheduleDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -179,13 +179,20 @@ QPushButton:Hover{
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <item row="1" column="1">
-       <widget class="QSpinBox" name="spinBox_2"/>
+       <widget class="QSpinBox" name="spinBox_2">
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item row="0" column="1">
        <widget class="QSpinBox" name="spinBox">
         <property name="maximumSize">
          <size>
-          <width>50</width>
+          <width>30</width>
           <height>16777215</height>
          </size>
         </property>
@@ -209,7 +216,14 @@ QPushButton:Hover{
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QSpinBox" name="spinBox_3"/>
+       <widget class="QSpinBox" name="spinBox_3">
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>16777215</height>
+         </size>
+        </property>
+       </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="label_2">
@@ -227,10 +241,16 @@ QPushButton:Hover{
   <customwidget>
    <class>TitleBar</class>
    <extends>QFrame</extends>
-   <header>titlebar.h</header>
+   <header>TimerPage/TitleBar.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>spinBox</tabstop>
+  <tabstop>spinBox_2</tabstop>
+  <tabstop>spinBox_3</tabstop>
+  <tabstop>Btn_close</tabstop>
+ </tabstops>
  <resources>
   <include location="../../assets/files.qrc"/>
  </resources>

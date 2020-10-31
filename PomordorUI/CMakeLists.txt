@@ -25,25 +25,27 @@ endif(MSVC)
 find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
 
 set(project_ui
-	src/Timer/Timer.ui
-	src/Timer/Prop.ui
+	src/TimerPage/TimerPage.ui
+	src/TimerPage/ScheduleDialog.ui
 )
 
 set(project_headers
 	src/pompch.h
-	src/Timer/Timer.h
-	src/Timer/Prop.h
-	src/Timer/TrayIcon.h
-	src/Timer/Titlebar.h
+	src/TimerPage/Timer.h
+	src/TimerPage/TimerPage.h
+	src/TimerPage/ScheduleDialog.h
+	src/TimerPage/TrayIcon.h
+	src/TimerPage/Titlebar.h
 )
 
 set(project_sources 
     src/main.cpp
 	src/pompch.cpp
-	src/Timer/Timer.cpp
-	src/Timer/Prop.cpp
-	src/Timer/TrayIcon.cpp
-	src/Timer/Titlebar.cpp
+	src/TimerPage/Timer.cpp
+	src/TimerPage/TimerPage.cpp
+	src/TimerPage/ScheduleDialog.cpp
+	src/TimerPage/TrayIcon.cpp
+	src/TimerPage/Titlebar.cpp
 )
 
 qt5_wrap_ui(project_headers_wrapped ${project_ui})
