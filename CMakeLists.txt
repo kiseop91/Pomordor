@@ -18,12 +18,6 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
     endif()
 endif()
 
-if(NOT EXISTS "vendor/googletest/CMakeLists.txt" OR NOT EXISTS "vendor/jsoncpp/CMakeLists.txt")
-    message(FATAL_ERROR "The submodules were not downloaded! GIT_SUBMODULE was turned off or failed. Please update submodules and try again.")
-else()
-    message("Submodule update successed!")
-endif()
-
 set(JSONCPP_USAGE_LIB ON)
 
 enable_testing()
