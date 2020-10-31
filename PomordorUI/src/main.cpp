@@ -8,6 +8,8 @@ int main(int argc, char *argv[])
 	QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 	SetProcessDPIAware();
 
+	Pome::printJson();
+
     QApplication a(argc, argv);
 				
 	QFontDatabase::addApplicationFont(":/font/fonts/segoeui.ttf");
