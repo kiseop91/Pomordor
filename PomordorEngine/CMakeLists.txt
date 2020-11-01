@@ -19,13 +19,23 @@ set(project_source
 	src/Clock/Clock.cpp
 )
 
-# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}../vendor/lib)
+if(JSONCPP_USAGE_LIB)
+	set(jsoncpp "jsoncpp_static")
+elseif(JSONCPP_USAGE_LIB)
+	set(jsoncpp "jsoncpp_lib")
+endif()
 
 add_library(
 	${PROJECT_NAME} 
 	STATIC 
 	${project_source} 
 	${project_headers} 
+)
+
+target_link_libraries(
+	${PROJECT_NAME} 
+	PUBLIC 
+	${jsoncpp}
 )
 
 target_precompile_headers(
@@ -38,4 +48,5 @@ target_include_directories(
 	${PROJECT_NAME} 
 	PUBLIC 
 	${CMAKE_CURRENT_SOURCE_DIR}/src
+	${CMAKE_SOURCE_DIR}/vendor/jsoncpp/include
 )
