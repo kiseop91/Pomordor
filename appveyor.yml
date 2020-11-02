@@ -1,16 +1,28 @@
 version: '{build}'
 clone_folder: c:\projects\cmake-init
+
+# Do not build feature branch with open Pull Requests
+skip_branch_with_pr: false
+
 image:
 - Visual Studio 2017
+
+
 configuration:
 - Release
 - Debug
+
+
 platform:
 - x64
+
+
 environment:
   matrix:
   - arch: Win64
   # - arch: #does not work, Release|x64 not a valid target
+
+
 matrix:
   fast_finish: true
 
@@ -23,22 +35,28 @@ init:
 - if "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2017" ( set generator="Visual Studio 15 2017%arch%" )
 - echo %generator%
 
+
 before_build:
 - cmd: |-
     mkdir build
     cd build
     cmake --version
     cmake .. -G %generator%
+
+
 build:
   project: c:\projects\cmake-init\build\Pomordor.sln
   verbosity: minimal
   parallel: true
+
+
 only_commits:
   files:
     - CMakeLists.txt
     - appveyor.yml
     - source/
     - cmake/
+
 
 test_script:
   - ctest -C %CONFIGURATION% --output-on-failure

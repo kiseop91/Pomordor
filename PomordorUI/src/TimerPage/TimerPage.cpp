@@ -18,7 +18,7 @@ TimerPage::TimerPage(QWidget *parent)
 {
 	ui->setupUi(this);
 
-	setWindowFlags(Qt::FramelessWindowHint);
+	setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 	setAttribute(Qt::WA_TranslucentBackground);
 	setAutoFillBackground(true);
 
@@ -28,7 +28,6 @@ TimerPage::TimerPage(QWidget *parent)
 	ui->TimerStateLabel->setFont(segoe);
 	ui->SetCountLabel->setFont(segoe);
 	
-	m_Timer->fillProgress(0.999f);
 	m_Timer->setTimerStateUi();
 	m_ScheduleDialog->applyScheduleValue();
 
