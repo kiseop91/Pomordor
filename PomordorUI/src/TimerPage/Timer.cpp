@@ -30,7 +30,7 @@ void Timer::Stop()
 	m_CurState = TimerState::None;
 	
 	setTimerStateUi();
-	fillProgress(0.999f);
+	m_MyPage->ui->Progress_Front->setStyleSheet("QWidget{  border-radius: 135px; background-color: rgb(238, 213, 214); }");
 	m_EngineClock.Stop();
 }
 
@@ -70,6 +70,7 @@ void Timer::updateSetCount()
 
 void Timer::fillProgress(float percentage)
 {
+	if (percentage - 0.001f < 0) return;
 	switch (m_CurState)
 	{
 	case TimerState::Porm: SSProgress = SSProgress_Porm; break;
@@ -77,8 +78,8 @@ void Timer::fillProgress(float percentage)
 	case TimerState::None: SSProgress = SSProgress_Porm; break;
 	}
 
-	SSProgress.replace(QString("{GradPoint_1}"), QString::number(percentage));
-	SSProgress.replace(QString("{GradPoint_2}"), QString::number(percentage + 0.0001f));
+	SSProgress.replace(QString("{GradPoint_1}"), QString::number(percentage - 0.001f));
+	SSProgress.replace(QString("{GradPoint_2}"), QString::number(percentage));
 	m_MyPage->ui->Progress_Front->setStyleSheet(SSProgress);
 }
 

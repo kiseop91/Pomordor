@@ -28,7 +28,6 @@ TimerPage::TimerPage(QWidget *parent)
 	ui->TimerStateLabel->setFont(segoe);
 	ui->SetCountLabel->setFont(segoe);
 	
-	m_Timer->fillProgress(1.000f);
 	m_Timer->setTimerStateUi();
 	m_ScheduleDialog->applyScheduleValue();
 
