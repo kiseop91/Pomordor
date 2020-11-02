@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
 	setAttribute(Qt::WA_TranslucentBackground);
 
 	justOneCount = 0; 
-	
+	justOneCount = 0; justOneCount = 0; justOneCount = 0; 
 	mouseX = this->geometry().x();
 	mouseY = this->geometry().y();
 	absY = this->geometry().y();
