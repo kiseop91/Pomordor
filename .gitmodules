@@ -1,6 +1,3 @@
 [submodule "vendor/googletest"]
 	path = vendor/googletest
 	url = https://github.com/google/googletest
-[submodule "vendor/jsoncpp"]
-	path = vendor/jsoncpp
-	url = https://github.com/zxwnstn/jsoncpp
