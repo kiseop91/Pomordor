@@ -49,12 +49,12 @@ private:
 	QString SSProgress_Porm_bg =
 		"QWidget{\n"
 		"border-radius: 134px;\n"
-		"background-color: qconicalgradient(cx : 0.5, cy : 0.5, angle : 90, stop : 0.0 rgba(255, 255, 255, 0), stop : 0.0 rgba(217, 10, 20, 30));\n"
+		"background-color: qconicalgradient(cx : 0.5, cy : 0.5, angle : 90, stop : 0.0 rgba(255, 255, 255, 0), stop : 0.0 rgb(238, 213, 214));\n"
 		"}";
 	QString SSProgress_Break_bg =
 		"QWidget{\n"
 		"border-radius: 134px;\n"
-		"background-color: qconicalgradient(cx : 0.5, cy : 0.5, angle : 90, stop : 0.0 rgba(255, 255, 255, 0), stop : 0.0 rgba(158, 184, 154, 30));\n"
+		"background-color: qconicalgradient(cx : 0.5, cy : 0.5, angle : 90, stop : 0.0 rgba(255, 255, 255, 0), stop : 0.0 rgb(233,235,233));\n"
 		"}";
 
 	QString SSProgress;
