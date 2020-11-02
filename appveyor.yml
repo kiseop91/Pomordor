@@ -54,12 +54,12 @@ build:
   parallel: true
 
 
-only_commits:
-  files:
-    - CMakeLists.txt
-    - appveyor.yml
-    - source/
-    - cmake/
+# only_commits:
+#  files:
+#    - CMakeLists.txt
+#    - appveyor.yml
+#    - source/
+#    - cmake/
 
 
 test_script:
