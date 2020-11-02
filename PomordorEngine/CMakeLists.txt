@@ -19,34 +19,47 @@ set(project_source
 	src/Clock/Clock.cpp
 )
 
-if(JSONCPP_USAGE_LIB)
-	set(jsoncpp "jsoncpp_static")
-elseif(JSONCPP_USAGE_LIB)
-	set(jsoncpp "jsoncpp_lib")
+if(BUILD_PE_STATIC)
+	message("Pome - static lib")
+	add_library(
+		${PROJECT_NAME} 
+		STATIC 
+		${project_source} 
+		${project_headers} 
+	)
+elseif(BUILD_PE_LIB)
+	message("Pome - dll")
+	add_library(
+		${PROJECT_NAME} 
+		SHARED 
+		${project_source} 
+		${project_headers} 
+	)
+else()
+	message("Nothing chooesd please check pomordor_config.cmake")
 endif()
 
-add_library(
-	${PROJECT_NAME} 
-	STATIC 
-	${project_source} 
-	${project_headers} 
+set_target_properties(
+	${PROJECT_NAME}
+	PROPERTIES
+    CXX_STANDARD 17
 )
 
 target_link_libraries(
 	${PROJECT_NAME} 
-	PUBLIC 
-	${jsoncpp}
+	PRIVATE 
+	${Jsoncpp}
 )
 
 target_precompile_headers(
 	${PROJECT_NAME} 
-	PUBLIC 
+	PRIVATE 
 	"${CMAKE_CURRENT_SOURCE_DIR}/src/pegpch.h"
 )
 
 target_include_directories(
 	${PROJECT_NAME} 
-	PUBLIC 
+	PRIVATE 
 	${CMAKE_CURRENT_SOURCE_DIR}/src
 	${CMAKE_SOURCE_DIR}/vendor/jsoncpp/include
 )

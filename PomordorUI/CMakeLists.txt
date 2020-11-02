@@ -21,7 +21,6 @@ set (RUN_ENV "PATH=${QTDIR}/bin")
 MESSAGE ("-- RUN_ENV: ${RUN_ENV}")
 endif(MSVC)
 
-
 find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
 
 set(project_ui
@@ -60,23 +59,45 @@ add_executable(
 	assets/files.qrc
 )
 
+set_target_properties(
+	${PROJECT_NAME}
+	PROPERTIES
+    CXX_STANDARD 17
+)
+
 target_precompile_headers(
 	${PROJECT_NAME} 
-	PUBLIC 
+	PRIVATE 
 	"${CMAKE_CURRENT_SOURCE_DIR}/src/pompch.h"
 )
 
 target_include_directories(
 	${PROJECT_NAME} 
-	PUBLIC 
+	PRIVATE 
 	${CMAKE_SOURCE_DIR}/PomordorEngine/src
 	${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 target_link_libraries(${PROJECT_NAME}
-    PUBLIC
+    PRIVATE
     Qt5::Core
     Qt5::Gui
     Qt5::Widgets
     PomordorEngine
+)
+
+if(false)
+	set(WindpOption)
+elseif(false)
+	set(WindpOption)
+endif()
+
+add_custom_command( 
+	TARGET ${PROJECT_NAME} 
+	COMMAND echo "Create Qt5 dependencies.."
+	COMMAND call 
+	vendor\\Qt5.14.2\\msvc2017\\bin\\windeployqt.exe
+	$(OutputPath)$(TargetName)$(TargetExt)
+	${WindpOption}
+	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
