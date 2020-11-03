@@ -26,6 +26,7 @@ find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
 set(project_ui
 	src/TimerPage/TimerPage.ui
 	src/TimerPage/ScheduleDialog.ui
+	src/SplashWidget/splashwidget.ui
 )
 
 set(project_headers
@@ -35,6 +36,7 @@ set(project_headers
 	src/TimerPage/ScheduleDialog.h
 	src/TimerPage/TrayIcon.h
 	src/TimerPage/Titlebar.h
+	src/SplashWidget/splashwidget.h
 )
 
 set(project_sources 
@@ -45,12 +47,14 @@ set(project_sources
 	src/TimerPage/ScheduleDialog.cpp
 	src/TimerPage/TrayIcon.cpp
 	src/TimerPage/Titlebar.cpp
+	src/SplashWidget/splashwidget.cpp
 )
 
 set(qt_moc_headers
 	src/TimerPage/TimerPage.h
 	src/TimerPage/ScheduleDialog.h
 	src/TimerPage/TrayIcon.h
+	src/SplashWidget/splashwidget.h
 )
 
 qt5_wrap_ui(project_headers_wrapped ${project_ui})
