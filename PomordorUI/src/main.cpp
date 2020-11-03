@@ -1,5 +1,7 @@
 #include "pompch.h"
 #include "TimerPage/TimerPage.h"
+#include "SplashWidget/splashwidget.h"
+
 #include <Windows.h>
 
 int main(int argc, char *argv[])
@@ -15,8 +17,9 @@ int main(int argc, char *argv[])
 	QFontDatabase::addApplicationFont(":/font/fonts/segoeui.ttf");
 	QFontDatabase::addApplicationFont(":/font/fonts/D2Coding.ttf");
 
-    TimerPage t;
-    t.show();
+	TimerPage t;
+	SplashWidget s(&t);
+
 
     return a.exec();
 }
