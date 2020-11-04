@@ -51,7 +51,6 @@ void SplashWidget::progress()
 
 SplashWidget::~SplashWidget()
 {
-    delete m_Timer;
     delete ui;
 }
 

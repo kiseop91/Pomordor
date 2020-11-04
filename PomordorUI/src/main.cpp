@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 	QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 	SetProcessDPIAware();
 
-	Pome::printJson();
+	//Pome::printJson();
 
     QApplication a(argc, argv);
 				
