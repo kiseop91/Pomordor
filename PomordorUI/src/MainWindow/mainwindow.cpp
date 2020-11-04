@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
 	, ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
-
+	ui->titleBar->SetParentWidget(this);
 	setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
 	setAttribute(Qt::WA_TranslucentBackground);
 	setAutoFillBackground(true);	
