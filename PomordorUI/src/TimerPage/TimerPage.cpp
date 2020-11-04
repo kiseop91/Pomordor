@@ -16,26 +16,40 @@ TimerPage::TimerPage(QWidget *parent)
 	, m_TrayIcon(new TrayIcon(QIcon(":/icon/Tomato"), this))
 	, m_Timer(new Timer(this))
 {
-	ui->setupUi(this);
-
-	setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
-	setAttribute(Qt::WA_TranslucentBackground);
-	setAutoFillBackground(true);
-
-	QFont d2code("D2Coding");
-	QFont segoe("Segoe UI");
-	ui->TimerButton->setFont(d2code);
-	ui->TimerStateLabel->setFont(segoe);
-	ui->SetCountLabel->setFont(segoe);
 	
-	m_Timer->setTimerStateUi();
-	m_ScheduleDialog->applyScheduleValue();
+	auto setWindowAttribute =  [&]{
+		ui->setupUi(this);
+		setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
+		setAttribute(Qt::WA_TranslucentBackground);
+		setAutoFillBackground(true);
+	};
 
+	auto setFont = [&]{
+		QFont d2code("D2Coding");
+		QFont segoe("Segoe UI");
+		ui->TimerButton->setFont(d2code);
+		ui->TimerStateLabel->setFont(segoe);
+		ui->SetCountLabel->setFont(segoe);
+	};
+	
+	
+	auto setTimer = [&]{
+		m_Timer->setTimerStateUi();
+		m_ScheduleDialog->applyScheduleValue();
+	};
+	
+
+	auto setConnect = [&]{
 	connect(ui->Title_Close, &QPushButton::clicked, [this]() { hide(); m_ScheduleDialog->hide(); });
-
 	m_PlayButtonConn = connect(ui->PlayButton, SIGNAL(clicked()), SLOT(onTimerStart()));
 	connect(m_Loop, SIGNAL(timeout()), this, SLOT(onTimerLoop()));
 	connect(ui->TimerButton, SIGNAL(clicked()), this, SLOT(onToggleSchduleDialog()));
+	};
+
+	setWindowAttribute();
+	setFont();
+	setTimer();
+	setConnect();	
 }
 
 TimerPage::~TimerPage()
