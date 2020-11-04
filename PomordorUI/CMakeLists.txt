@@ -37,6 +37,7 @@ set(project_headers
 	src/TimerPage/TrayIcon.h
 	src/TimerPage/Titlebar.h
 	src/SplashWidget/splashwidget.h
+	src/MainWindow/mainwindow.h
 )
 
 set(project_sources 
@@ -48,6 +49,7 @@ set(project_sources
 	src/TimerPage/TrayIcon.cpp
 	src/TimerPage/Titlebar.cpp
 	src/SplashWidget/splashwidget.cpp
+	src/MainWindow/mainwindow.cpp
 )
 
 set(qt_moc_headers
@@ -55,6 +57,7 @@ set(qt_moc_headers
 	src/TimerPage/ScheduleDialog.h
 	src/TimerPage/TrayIcon.h
 	src/SplashWidget/splashwidget.h
+	src/MainWindow/mainwindow.h
 )
 
 qt5_wrap_ui(project_headers_wrapped ${project_ui})

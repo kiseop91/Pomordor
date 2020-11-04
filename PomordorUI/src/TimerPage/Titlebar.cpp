@@ -3,14 +3,18 @@
 #include "Titlebar.h"
 
 TitleBar::TitleBar(QWidget * parent)
-	: QFrame(parent)
-	, parent(parent)
+	: QFrame(parent), m_ParentWidget(nullptr)
 {
 }
 
 TitleBar::~TitleBar()
 {
 
+}
+
+void TitleBar::SetParentWidget(QWidget * _widget)
+{
+	m_ParentWidget = _widget;
 }
 
 void TitleBar::mouseMoveEvent(QMouseEvent * event)
@@ -30,7 +34,8 @@ void TitleBar::mouseMoveEvent(QMouseEvent * event)
 		absY = event->pos().y();
 		inFirst = false;
 	}
-	parent->move(mouseX - absX, mouseY - absY);
+	if(m_ParentWidget == nullptr ) m_ParentWidget = this->parentWidget();
+	m_ParentWidget->move(mouseX - absX, mouseY - absY);
 }
 
 void TitleBar::mouseReleaseEvent(QMouseEvent* event)
