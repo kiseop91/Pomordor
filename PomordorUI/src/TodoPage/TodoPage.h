@@ -18,5 +18,4 @@ private slots:
 
 private:
     Ui::TodoPage* ui;
-	class ItemList* m_List;
 };

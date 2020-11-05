@@ -4,12 +4,18 @@ class TodoItemList : public QWidget
 {
 public:
 	TodoItemList(QWidget* parent = nullptr);
+
 	~TodoItemList();
 
 public:
-	void PushItem(class TodoItemWidget* item);
+	void PushItem(const QString& todoStr, const QString& description);
+
+protected:
+	void wheelEvent(QWheelEvent* event) override;
 
 private:
-	std::vector<TodoItemWidget*> m_Widgets;
-
+	std::vector<class TodoItemWidget*> m_Items;
+	int dir;
+	int callCount = 0;
+	QTimer* m_WheelLoop;
 };

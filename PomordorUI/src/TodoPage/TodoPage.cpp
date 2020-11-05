@@ -11,11 +11,12 @@ TodoPage::TodoPage(QWidget* parent)
     //setWindowFlags(Qt::FramelessWindowHint);
 
     connect(ui->pushButton, SIGNAL(clicked()), SLOT(AddItem()));
+	ui->frame_2->PushItem("todo", "desc");
 }
 
 void TodoPage::AddItem()
 {
-
+	ui->frame_2->PushItem("todo", "desc");
 }
 
 TodoPage::~TodoPage()
