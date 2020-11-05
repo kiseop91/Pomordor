@@ -32,6 +32,17 @@
     <number>0</number>
    </property>
    <item>
+    <widget class="QFrame" name="frame_2">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2"/>
+    </widget>
+   </item>
+   <item>
     <widget class="QFrame" name="frame">
      <property name="maximumSize">
       <size>
@@ -111,33 +122,6 @@ QLineEdit::Hover{
         <property name="icon">
          <iconset resource="../../assets/files.qrc">
           <normaloff>:/20x20/icons/20x20/cil-medical-cross.png</normaloff>:/20x20/icons/20x20/cil-medical-cross.png</iconset>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QFrame" name="frame_2">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_2">
-      <item>
-       <widget class="QListWidget" name="listWidget">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QListWidget{
-	border : none;
-}</string>
         </property>
        </widget>
       </item>

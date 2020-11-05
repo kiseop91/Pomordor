@@ -28,6 +28,7 @@ set(project_ui
 	src/TimerPage/ScheduleDialog.ui
 	src/SplashWidget/splashwidget.ui
 	src/TodoPage/TodoPage.ui
+	src/TodoPage/TodoItemWidget.ui
 	src/MainWindow/mainwindow.ui
 )
 
@@ -40,6 +41,8 @@ set(project_headers
 	src/TimerPage/Titlebar.h
 	src/SplashWidget/splashwidget.h
 	src/TodoPage/TodoPage.h
+	src/TodoPage/TodoItemWidget.h
+	src/TodoPage/TodoItemList.h
 	src/MainWindow/mainwindow.h
 )
 
@@ -53,6 +56,8 @@ set(project_sources
 	src/TimerPage/Titlebar.cpp
 	src/TodoPage/TodoPage.cpp
 	src/SplashWidget/splashwidget.cpp
+	src/TodoPage/TodoItemWidget.cpp
+	src/TodoPage/TodoItemList.cpp
 	src/MainWindow/mainwindow.cpp
 )
 
@@ -62,6 +67,8 @@ set(qt_moc_headers
 	src/TimerPage/TrayIcon.h
 	src/SplashWidget/splashwidget.h
 	src/TodoPage/TodoPage.h
+	src/TodoPage/TodoItemWidget.h
+	src/TodoPage/TodoItemList.h
 	src/MainWindow/mainwindow.h
 )
 

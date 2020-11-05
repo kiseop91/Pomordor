@@ -15,9 +15,8 @@ public:
 private slots:
     void AddItem();
 
-protected:
-    void keyPressEvent(QKeyEvent* event) override;
 
 private:
     Ui::TodoPage* ui;
+	class ItemList* m_List;
 };
