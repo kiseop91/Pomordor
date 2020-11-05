@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
 	ui->stackedWidget->setCurrentIndex(0);
 	timerPage->show();
 
-	//Todo : index EnumÀÌ³ª ÀĞÀ»¼ö ÀÖ°Ô °ü¸®ÇÏµµ·Ï ¼öÁ¤ÇÒ °Í. 2020/11/06 Kiseop Kim.
+	//Todo : index Enumï¿½Ì³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½. 2020/11/06 Kiseop Kim.
 	connect(ui->timerButton, &QPushButton::clicked, [this]() { ui->stackedWidget->setCurrentIndex(0); });
 	connect(ui->todoButton, &QPushButton::clicked, [this]() { ui->stackedWidget->setCurrentIndex(1); });
 	connect(ui->statisticsButton, &QPushButton::clicked, [this]() { ui->stackedWidget->setCurrentIndex(2); });
