@@ -19,10 +19,7 @@ int main(int argc, char *argv[])
 	QFontDatabase::addApplicationFont(":/font/fonts/D2Coding.ttf");
 
 	MainWindow mainWindow;
-	mainWindow.show();
-	
-	TimerPage t;
-	SplashWidget s(&t);
+	SplashWidget s(&mainWindow);
 
 
     return a.exec();

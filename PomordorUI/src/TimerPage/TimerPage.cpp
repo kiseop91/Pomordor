@@ -40,7 +40,6 @@ TimerPage::TimerPage(QWidget *parent)
 	
 
 	auto setConnect = [&]{
-	connect(ui->Title_Close, &QPushButton::clicked, [this]() { hide(); m_ScheduleDialog->hide(); });
 	m_PlayButtonConn = connect(ui->PlayButton, SIGNAL(clicked()), SLOT(onTimerStart()));
 	connect(m_Loop, SIGNAL(timeout()), this, SLOT(onTimerLoop()));
 	connect(ui->TimerButton, SIGNAL(clicked()), this, SLOT(onToggleSchduleDialog()));
