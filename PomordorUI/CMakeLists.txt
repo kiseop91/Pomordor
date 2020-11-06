@@ -27,6 +27,7 @@ set(project_ui
 	src/TimerPage/TimerPage.ui
 	src/TimerPage/ScheduleDialog.ui
 	src/SplashWidget/splashwidget.ui
+	src/MainWindow/mainwindow.ui
 )
 
 set(project_headers
