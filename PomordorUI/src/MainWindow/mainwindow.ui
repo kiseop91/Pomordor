@@ -72,7 +72,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
-        <widget class="QFrame" name="frame">
+        <widget class="QFrame" name="timerButtonFrame">
          <property name="minimumSize">
           <size>
            <width>53</width>
@@ -108,7 +108,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="timerButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -143,7 +143,7 @@ QPushButton:hover{
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="frame_2">
+        <widget class="QFrame" name="todoButtonFrame">
          <property name="minimumSize">
           <size>
            <width>53</width>
@@ -179,7 +179,7 @@ QPushButton:hover{
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="todoButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -214,7 +214,7 @@ QPushButton:hover{
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="frame_3">
+        <widget class="QFrame" name="statisticsButtonFrame">
          <property name="minimumSize">
           <size>
            <width>53</width>
@@ -250,7 +250,7 @@ QPushButton:hover{
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="statisticsButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -285,7 +285,7 @@ QPushButton:hover{
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="frame_5">
+        <widget class="QFrame" name="settingButtonFrame">
          <property name="minimumSize">
           <size>
            <width>53</width>
@@ -321,7 +321,7 @@ QPushButton:hover{
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton_4">
+           <widget class="QPushButton" name="settingButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -604,17 +604,19 @@ QPushButton:hover
          <property name="currentIndex">
           <number>1</number>
          </property>
-         <widget class="QWidget" name="page">
+         <widget class="QWidget" name="timerPage">
           <property name="styleSheet">
            <string notr="true">background-color: rgb(244, 244, 244);</string>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2"/>
          </widget>
-         <widget class="QWidget" name="page_2"/>
+         <widget class="QWidget" name="todoPage"/>
+         <widget class="QWidget" name="statisticsPage"/>
+         <widget class="QWidget" name="settingPage"/>
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="frame_4">
+        <widget class="QFrame" name="footerFrame">
          <property name="styleSheet">
           <string notr="true">QFrame{
 	background-color: rgb(244, 244, 244);
