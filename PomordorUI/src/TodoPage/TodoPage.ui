@@ -45,6 +45,9 @@
        <height>70</height>
       </size>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color : rgb(255, 250, 250);</string>
+     </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
      </property>
@@ -124,11 +127,13 @@
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>80</height>
+       <height>40</height>
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">QWidget{
+	background-color : rgb(255, 250, 250);
+}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -137,34 +142,23 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <property name="spacing">
+       <number>11</number>
+      </property>
+      <property name="leftMargin">
+       <number>11</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
       <item>
-       <widget class="QLineEdit" name="lineEdit">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>240</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLineEdit{
-	border:1px solid;
-	border-color : rgb(255, 155, 155);
-	background-color: none;
-}
-QLineEdit::Hover{
-	border-color : rgba(255, 155, 155, 100);
-}</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="AddTodoButton">
         <property name="maximumSize">
          <size>
           <width>30</width>
@@ -184,6 +178,18 @@ QLineEdit::Hover{
         <property name="icon">
          <iconset resource="../../assets/files.qrc">
           <normaloff>:/20x20/icons/20x20/cil-medical-cross.png</normaloff>:/20x20/icons/20x20/cil-medical-cross.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="AddDescript">
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+	color : rgb(255, 150, 150);
+}</string>
+        </property>
+        <property name="text">
+         <string>Add to-do item</string>
         </property>
        </widget>
       </item>

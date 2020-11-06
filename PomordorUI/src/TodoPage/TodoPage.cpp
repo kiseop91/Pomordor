@@ -9,10 +9,11 @@ TodoPage::TodoPage(QWidget* parent)
 {
     ui->setupUi(this);
 	ui->ItemList->SetScrollbar(ui->ScrollBar);
-	ui->PageTitle->setFont(QFont("D2Coding", 20, 100));
+	ui->PageTitle->setFont(QFont("Segoe UI", 20, 100));
 
-    connect(ui->pushButton, SIGNAL(clicked()), SLOT(AddItem()));
+	ui->AddDescript->setFont(QFont("Segoe UI", 10, 50));
 
+	connect(ui->AddTodoButton, SIGNAL(clicked()), SLOT(AddItem()));
 }
 
 void TodoPage::AddItem()
