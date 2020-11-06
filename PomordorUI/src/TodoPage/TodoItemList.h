@@ -9,6 +9,7 @@ public:
 
 public:
 	void PushItem(const QString& todoStr, const QString& description);
+	void EraseItem(uint32_t idx);
 
 protected:
 	void wheelEvent(QWheelEvent* event) override;

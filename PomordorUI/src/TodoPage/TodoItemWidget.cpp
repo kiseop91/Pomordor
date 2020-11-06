@@ -20,10 +20,12 @@ TodoItemWidget::~TodoItemWidget()
 
 void TodoItemWidget::SetDescription(const QString & str)
 {
+	ui->label_2->setText(str);
 }
 
 void TodoItemWidget::SetTodo(const QString & str)
 {
+	ui->label->setText(str);
 }
 
 void TodoItemWidget::SetIndex(uint32_t idx) 
@@ -46,10 +48,10 @@ void TodoItemWidget::enterEvent(QEvent * event)
 
 void TodoItemWidget::mousePressEvent(QMouseEvent * event)
 {
-	event->accept();
 
-	if (event->button() != Qt::MouseButton::RightButton)
-		return;
-
-	//m_MyList->RequestErase(Index);
+	//if (event->button() == Qt::RightButton)
+	//{
+		m_MyList->EraseItem(Index);
+		event->accept();
+	//}
 }

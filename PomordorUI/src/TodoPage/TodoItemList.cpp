@@ -48,7 +48,7 @@ TodoItemList::~TodoItemList()
 void TodoItemList::PushItem(const QString & todoStr, const QString & description)
 {
 	TodoItemWidget* item = new TodoItemWidget(this);
-	item->SetTodo(todoStr);
+	item->SetTodo(QString::number(m_Items.size() + 1));
 	item->SetDescription(description);
 
 	item->SetIndex(m_Items.size());
@@ -57,11 +57,38 @@ void TodoItemList::PushItem(const QString & todoStr, const QString & description
 
 	if (m_Items.size() == 8)
 	{
-		OffsetMax += m_Items.size() * item->GetHeight() - this->height();
+		OffsetMax += m_Items.size() * TodoItemWidget::GetHeight() - this->height();
 	}
 	else if(m_Items.size() > 8)
 	{
-		OffsetMax += item->GetHeight();
+		OffsetMax += TodoItemWidget::GetHeight();
+	}
+}
+
+void TodoItemList::EraseItem(uint32_t idx)
+{
+	auto item = m_Items.begin() + idx;
+	if (m_Items.size() == 8)
+	{
+		OffsetMax -= m_Items.size() * TodoItemWidget::GetHeight() - this->height();
+	}
+	else if (m_Items.size() > 8)
+	{
+		OffsetMax -= TodoItemWidget::GetHeight();
+	}
+
+	if (Offset > OffsetMax)
+	{
+		Offset = OffsetMax;
+	}
+
+	delete *item;
+	m_Items.erase(item);
+
+	for (size_t i = 0; i < m_Items.size(); ++i)
+	{
+		m_Items[i]->SetIndex(i);
+		m_Items[i]->AdjustOffsetPos(Offset);
 	}
 }
 

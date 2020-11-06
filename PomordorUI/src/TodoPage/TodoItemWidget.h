@@ -12,7 +12,7 @@ public:
 	~TodoItemWidget();
 
 public:
-	uint32_t GetHeight() const { return ItemWidgetWidth; }
+	static const uint32_t GetHeight() { return ItemWidgetWidth; }
 
 	void SetDescription(const QString& str);
 	void SetTodo(const QString& str);
@@ -27,7 +27,7 @@ private:
 	Ui::TodoItemWidget* ui;
 	class TodoItemList* m_MyList;
 
-	const uint32_t ItemWidgetWidth = 50;
+	static const uint32_t ItemWidgetWidth = 50;
 	uint32_t Index;
 
 	QRect OriginalRect;
