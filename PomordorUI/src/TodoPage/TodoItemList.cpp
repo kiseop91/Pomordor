@@ -9,17 +9,17 @@ TodoItemList::TodoItemList(QWidget* parent)
 {
 	connect(m_WheelLoop, &QTimer::timeout, [this]() {
 		++callCount;
-		if (   
+		if (
 			!(0 <= Offset && Offset <= OffsetMax)
 			|| (Offset == 0 && dir == 1)
 			|| (Offset == OffsetMax && dir == -1)
-		)
+			)
 		{
 			callCount = 0;
 			m_WheelLoop->stop();
 			return;
 		}
-		
+
 		Offset -= 5 * dir;
 		qDebug() << Offset;
 		for (auto& item : m_Items)
@@ -34,6 +34,8 @@ TodoItemList::TodoItemList(QWidget* parent)
 		}
 		UpdateScrollbar();
 	});
+
+	setFocusPolicy(Qt::StrongFocus);
 }
 
 
@@ -55,12 +57,12 @@ void TodoItemList::PushItem(const QString & todoStr, const QString & description
 	item->SetIndex(m_Items.size());
 	item->AdjustOffsetPos(Offset);
 	m_Items.emplace_back(item);
-	
+
 	if (m_Items.size() == presentMax)
 	{
 		OffsetMax += m_Items.size() * TodoItemWidget::GetHeight() - this->height();
 	}
-	else if(m_Items.size() > presentMax)
+	else if (m_Items.size() > presentMax)
 	{
 		OffsetMax += TodoItemWidget::GetHeight();
 	}
@@ -105,7 +107,7 @@ void TodoItemList::UpdateScrollbar()
 		return;
 	}
 	m_ScrollBar->show();
-	
+
 	ScrollBarHeight = (presentLimit / (float)m_Items.size()) * ScrollBarMaxHeight;
 	uint32_t scrollBarMaxY = ScrollBarMaxHeight - ScrollBarHeight;
 	ScrollBarY = (Offset / (float)OffsetMax) * scrollBarMaxY;
@@ -119,6 +121,7 @@ void TodoItemList::UpdateSelectedWidget(uint32_t idx)
 	{
 		if (idx == i)
 		{
+			m_Items[i]->onSelected = true;
 			m_Items[i]->setStyleSheet("background-color : rgb(233, 233, 233);");
 		}
 		else
@@ -151,4 +154,61 @@ void TodoItemList::wheelEvent(QWheelEvent * event)
 	m_WheelLoop->start(10);
 
 	event->accept();
+}
+
+void TodoItemList::MoveSelectedWidget(uint32_t idx)
+{
+	UpdateSelectedWidget(idx);
+
+	int left, top, right, bottom;
+	m_Items[idx]->OriginalRect.getCoords(&left, &top, &right, &bottom);
+
+
+	int curTopPoint = top - Offset;
+	int curBottomPoint = bottom - Offset;
+
+	if (curTopPoint < 0)
+	{
+		Offset += curTopPoint;
+	}
+	if (curBottomPoint > this->height())
+	{
+		Offset += curBottomPoint - this->height();
+	}
+	for (auto& item : m_Items)
+	{
+		item->AdjustOffsetPos(Offset);
+	}
+	UpdateScrollbar();
+
+}
+
+
+void TodoItemList::keyPressEvent(QKeyEvent * event)
+{
+	qDebug() << "On key Event";
+
+	if (event->key() == Qt::Key_Up)
+	{
+		for (int i = 1; i < m_Items.size(); ++i)
+		{
+			if (m_Items[i]->onSelected == true)
+			{
+				MoveSelectedWidget(i - 1);
+				break;
+			}
+		}
+	}
+	else if (event->key() == Qt::Key_Down)
+	{
+		for (int i = 0; i < m_Items.size() - 1; ++i)
+		{
+			if (m_Items[i]->onSelected == true)
+			{
+				MoveSelectedWidget(i + 1);
+				break;
+			}
+		}
+	}
+
 }

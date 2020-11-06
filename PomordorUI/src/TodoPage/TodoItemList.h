@@ -19,6 +19,11 @@ public:
 
 protected:
 	void wheelEvent(QWheelEvent* event) override;
+	void keyPressEvent(QKeyEvent* event) override;
+
+
+private:
+	void MoveSelectedWidget(uint32_t idx);
 
 private:
 	std::vector<class TodoItemWidget*> m_Items;
