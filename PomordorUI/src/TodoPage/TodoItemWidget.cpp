@@ -8,10 +8,17 @@ TodoItemWidget::TodoItemWidget(QWidget* parent)
 	: QWidget(parent)
 	, m_MyList(static_cast<TodoItemList*>(parent))
 	, ui(new Ui::TodoItemWidget)
+	, m_Menu(new QMenu)
+	, m_DeleteAction(new QAction("delete"))
+	, m_EditAction(new QAction("edit"))
 {
 	ui->setupUi(this);
 	show();
 	this->setAttribute(Qt::WA_Hover, true);
+
+	m_Menu->addActions({ m_DeleteAction, m_EditAction });
+
+	connect(m_DeleteAction, &QAction::triggered, [this]() {m_MyList->EraseItem(Index); });
 }
 
 TodoItemWidget::~TodoItemWidget()
@@ -43,15 +50,23 @@ void TodoItemWidget::AdjustOffsetPos(uint32_t offset)
 
 void TodoItemWidget::enterEvent(QEvent * event)
 {
-	//qDebug() << "is Mouse Hove";
+	setStyleSheet("QWidget{ background-color : rgb(233, 233, 233); }");
+}
+
+void TodoItemWidget::leaveEvent(QEvent * event)
+{
+	setStyleSheet("QWidget{ background-color : rgb(255, 255, 255); }");
 }
 
 void TodoItemWidget::mousePressEvent(QMouseEvent * event)
 {
+	if(event->button() == Qt::RightButton)
+	{
+		qDebug() << "hi";
 
-	//if (event->button() == Qt::RightButton)
-	//{
-		m_MyList->EraseItem(Index);
-		event->accept();
-	//}
+		m_Menu->move(QCursor::pos().x(), QCursor::pos().y());
+		m_Menu->show();
+	}
+	
+	
 }

@@ -21,6 +21,7 @@ public:
 
 protected:
 	void enterEvent(QEvent* event) override;
+	void leaveEvent(QEvent* event) override;
 	void mousePressEvent(QMouseEvent* event) override;
 
 private:
@@ -32,4 +33,10 @@ private:
 
 	QRect OriginalRect;
 	QRect OffsetedRect;
+
+	QMenu* m_Menu;
+	QAction* m_DeleteAction;
+	QAction* m_EditAction;
+
+	bool selected = false;
 };

@@ -15,7 +15,6 @@ public:
 private slots:
     void AddItem();
 
-
 private:
     Ui::TodoPage* ui;
 };

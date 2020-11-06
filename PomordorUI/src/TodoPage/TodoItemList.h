@@ -11,6 +11,9 @@ public:
 	void PushItem(const QString& todoStr, const QString& description);
 	void EraseItem(uint32_t idx);
 
+	void UpdateScrollbar();
+	inline void SetScrollbar(QWidget* scrollBar) { m_ScrollBar = scrollBar; }
+
 protected:
 	void wheelEvent(QWheelEvent* event) override;
 
@@ -21,4 +24,10 @@ private:
 	int OffsetMax = 0;
 	int callCount = 0;
 	QTimer* m_WheelLoop;
+
+	QWidget* m_ScrollBar;
+	uint32_t ScrollBarHeight;
+	const uint32_t ScrollBarMaxHeight = 440;
+	uint32_t ScrollBarY;
+
 };

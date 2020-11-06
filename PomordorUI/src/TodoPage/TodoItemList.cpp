@@ -32,6 +32,7 @@ TodoItemList::TodoItemList(QWidget* parent)
 			callCount = 0;
 			m_WheelLoop->stop();
 		}
+		UpdateScrollbar();
 	});
 }
 
@@ -63,6 +64,8 @@ void TodoItemList::PushItem(const QString & todoStr, const QString & description
 	{
 		OffsetMax += TodoItemWidget::GetHeight();
 	}
+
+	UpdateScrollbar();
 }
 
 void TodoItemList::EraseItem(uint32_t idx)
@@ -90,6 +93,25 @@ void TodoItemList::EraseItem(uint32_t idx)
 		m_Items[i]->SetIndex(i);
 		m_Items[i]->AdjustOffsetPos(Offset);
 	}
+
+	UpdateScrollbar();
+}
+
+void TodoItemList::UpdateScrollbar()
+{
+	if (m_Items.size() < 8)
+	{
+		m_ScrollBar->hide();
+		return;
+	}
+
+	m_ScrollBar->show();
+	
+	ScrollBarHeight = 7.2f / (float)m_Items.size() * ScrollBarMaxHeight;
+	uint32_t scrollBarMaxY = ScrollBarMaxHeight - ScrollBarHeight;
+	ScrollBarY = (Offset / (float)OffsetMax) * scrollBarMaxY;
+
+	m_ScrollBar->setGeometry(346, ScrollBarY, 2, ScrollBarHeight);
 }
 
 

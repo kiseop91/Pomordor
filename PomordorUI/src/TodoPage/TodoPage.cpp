@@ -8,10 +8,10 @@ TodoPage::TodoPage(QWidget* parent)
     , ui(new Ui::TodoPage)
 {
     ui->setupUi(this);
-    //setWindowFlags(Qt::FramelessWindowHint);
+	ui->ItemList->SetScrollbar(ui->ScrollBar);
+	ui->ItemList->PushItem("todo", "desc");
 
     connect(ui->pushButton, SIGNAL(clicked()), SLOT(AddItem()));
-	ui->ItemList->PushItem("todo", "desc");
 }
 
 void TodoPage::AddItem()
