@@ -12,7 +12,10 @@ public:
 	void EraseItem(uint32_t idx);
 
 	void UpdateScrollbar();
+	void UpdateSelectedWidget(uint32_t idx);
 	inline void SetScrollbar(QWidget* scrollBar) { m_ScrollBar = scrollBar; }
+
+	void CalcPresentCount();
 
 protected:
 	void wheelEvent(QWheelEvent* event) override;
@@ -29,5 +32,8 @@ private:
 	uint32_t ScrollBarHeight;
 	const uint32_t ScrollBarMaxHeight = 440;
 	uint32_t ScrollBarY;
+
+	float presentLimit;
+	uint32_t presentMax;
 
 };

@@ -19,6 +19,7 @@ public:
 	void SetIndex(uint32_t idx);
 	void AdjustOffsetPos(uint32_t offset);
 
+
 protected:
 	void enterEvent(QEvent* event) override;
 	void leaveEvent(QEvent* event) override;
@@ -38,5 +39,8 @@ private:
 	QAction* m_DeleteAction;
 	QAction* m_EditAction;
 
-	bool selected = false;
+	bool onSelected = false;
+	bool onHover = false;
+
+	friend class TodoItemList;
 };

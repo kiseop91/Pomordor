@@ -50,16 +50,22 @@ void TodoItemWidget::AdjustOffsetPos(uint32_t offset)
 
 void TodoItemWidget::enterEvent(QEvent * event)
 {
-	setStyleSheet("QWidget{ background-color : rgb(233, 233, 233); }");
+	bool onHover = true;
+	setStyleSheet("background-color : rgb(233, 233, 233);");
 }
 
 void TodoItemWidget::leaveEvent(QEvent * event)
 {
-	setStyleSheet("QWidget{ background-color : rgb(255, 255, 255); }");
+	bool onHover = false;
+	if(!onSelected)
+		setStyleSheet("background-color : rgb(255, 255, 255);");
 }
 
 void TodoItemWidget::mousePressEvent(QMouseEvent * event)
 {
+	onSelected = true;
+	m_MyList->UpdateSelectedWidget(Index);
+
 	if(event->button() == Qt::RightButton)
 	{
 		qDebug() << "hi";
@@ -67,6 +73,5 @@ void TodoItemWidget::mousePressEvent(QMouseEvent * event)
 		m_Menu->move(QCursor::pos().x(), QCursor::pos().y());
 		m_Menu->show();
 	}
-	
 	
 }

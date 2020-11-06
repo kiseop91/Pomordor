@@ -12,12 +12,15 @@ TodoPage::TodoPage(QWidget* parent)
 	ui->ItemList->PushItem("todo", "desc");
 
     connect(ui->pushButton, SIGNAL(clicked()), SLOT(AddItem()));
+
 }
 
 void TodoPage::AddItem()
 {
+	ui->ItemList->CalcPresentCount();
 	ui->ItemList->PushItem("todo", "desc");
 }
+
 
 TodoPage::~TodoPage()
 {

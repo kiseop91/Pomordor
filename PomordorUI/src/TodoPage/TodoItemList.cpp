@@ -55,12 +55,12 @@ void TodoItemList::PushItem(const QString & todoStr, const QString & description
 	item->SetIndex(m_Items.size());
 	item->AdjustOffsetPos(Offset);
 	m_Items.emplace_back(item);
-
-	if (m_Items.size() == 8)
+	
+	if (m_Items.size() == presentMax)
 	{
 		OffsetMax += m_Items.size() * TodoItemWidget::GetHeight() - this->height();
 	}
-	else if(m_Items.size() > 8)
+	else if(m_Items.size() > presentMax)
 	{
 		OffsetMax += TodoItemWidget::GetHeight();
 	}
@@ -71,11 +71,11 @@ void TodoItemList::PushItem(const QString & todoStr, const QString & description
 void TodoItemList::EraseItem(uint32_t idx)
 {
 	auto item = m_Items.begin() + idx;
-	if (m_Items.size() == 8)
+	if (m_Items.size() == presentMax)
 	{
 		OffsetMax -= m_Items.size() * TodoItemWidget::GetHeight() - this->height();
 	}
-	else if (m_Items.size() > 8)
+	else if (m_Items.size() > presentMax)
 	{
 		OffsetMax -= TodoItemWidget::GetHeight();
 	}
@@ -99,25 +99,49 @@ void TodoItemList::EraseItem(uint32_t idx)
 
 void TodoItemList::UpdateScrollbar()
 {
-	if (m_Items.size() < 8)
+	if (m_Items.size() <= presentMax)
 	{
 		m_ScrollBar->hide();
 		return;
 	}
-
 	m_ScrollBar->show();
 	
-	ScrollBarHeight = 7.2f / (float)m_Items.size() * ScrollBarMaxHeight;
+	ScrollBarHeight = (presentLimit / (float)m_Items.size()) * ScrollBarMaxHeight;
 	uint32_t scrollBarMaxY = ScrollBarMaxHeight - ScrollBarHeight;
 	ScrollBarY = (Offset / (float)OffsetMax) * scrollBarMaxY;
 
 	m_ScrollBar->setGeometry(346, ScrollBarY, 2, ScrollBarHeight);
 }
 
+void TodoItemList::UpdateSelectedWidget(uint32_t idx)
+{
+	for (size_t i = 0; i < m_Items.size(); ++i)
+	{
+		if (idx == i)
+		{
+			m_Items[i]->setStyleSheet("background-color : rgb(233, 233, 233);");
+		}
+		else
+		{
+			m_Items[i]->onSelected = false;
+			if (m_Items[i]->onHover == false)
+			{
+				m_Items[i]->setStyleSheet("background-color : rgb(255, 255, 255);");
+			}
+		}
+	}
+}
+
+void TodoItemList::CalcPresentCount()
+{
+	presentLimit = this->height() / (float)TodoItemWidget::GetHeight();
+	presentMax = (int)presentLimit;
+}
 
 void TodoItemList::wheelEvent(QWheelEvent * event)
 {
-	if (m_Items.size() < 8)
+	float presentLimit = this->height() / (float)TodoItemWidget::GetHeight();
+	if (m_Items.size() < presentLimit)
 		return;
 	m_WheelLoop->stop();
 
