@@ -602,7 +602,7 @@ QPushButton:hover
           <number>0</number>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="timerPage">
           <property name="styleSheet">
@@ -610,9 +610,39 @@ QPushButton:hover
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_2"/>
          </widget>
-         <widget class="QWidget" name="todoPage"/>
-         <widget class="QWidget" name="statisticsPage"/>
-         <widget class="QWidget" name="settingPage"/>
+         <widget class="QWidget" name="todoPage">
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <widget class="QPushButton" name="pushButton">
+             <property name="text">
+              <string>Test : todo (위젯 추가시 삭제 할 것 )</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="statisticsPage">
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <item>
+            <widget class="QPushButton" name="pushButton_2">
+             <property name="text">
+              <string>Test : statistics (위젯 추가시 삭제 할 것 )</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="settingPage">
+          <layout class="QVBoxLayout" name="verticalLayout_10">
+           <item>
+            <widget class="QPushButton" name="pushButton_3">
+             <property name="text">
+              <string>Test : setting (위젯 추가시 삭제 할 것 )</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
        <item>

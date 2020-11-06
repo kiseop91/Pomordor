@@ -17,6 +17,12 @@ MainWindow::MainWindow(QWidget *parent)
 	ui->stackedWidget->insertWidget(0, timerPage);
 	ui->stackedWidget->setCurrentIndex(0);
 	timerPage->show();
+
+	//Todo : index Enum이나 읽을수 있게 관리하도록 수정할 것. 2020/11/06 Kiseop Kim.
+	connect(ui->timerButton, &QPushButton::clicked, [this]() { ui->stackedWidget->setCurrentIndex(0); });
+	connect(ui->todoButton, &QPushButton::clicked, [this]() { ui->stackedWidget->setCurrentIndex(1); });
+	connect(ui->statisticsButton, &QPushButton::clicked, [this]() { ui->stackedWidget->setCurrentIndex(2); });
+	connect(ui->settingButton, &QPushButton::clicked, [this]() { ui->stackedWidget->setCurrentIndex(3); });
 }
 
 
