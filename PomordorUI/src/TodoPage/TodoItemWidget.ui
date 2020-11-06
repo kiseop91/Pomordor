@@ -10,6 +10,9 @@
     <height>50</height>
    </rect>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
     <number>0</number>
@@ -30,7 +33,7 @@
     <widget class="QFrame" name="frame_2">
      <property name="maximumSize">
       <size>
-       <width>50</width>
+       <width>60</width>
        <height>16777215</height>
       </size>
      </property>

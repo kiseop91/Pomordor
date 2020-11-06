@@ -4,15 +4,15 @@ class TodoItemList : public QWidget
 {
 public:
 	TodoItemList(QWidget* parent = nullptr);
-
 	~TodoItemList();
 
 public:
 	void PushItem(const QString& todoStr, const QString& description);
 	void EraseItem(uint32_t idx);
 
-	void UpdateScrollbar();
 	void UpdateSelectedWidget(uint32_t idx);
+
+	void UpdateScrollbar();
 	inline void SetScrollbar(QWidget* scrollBar) { m_ScrollBar = scrollBar; }
 
 	void CalcPresentCount();

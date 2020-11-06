@@ -38,7 +38,7 @@ void TodoItemWidget::SetTodo(const QString & str)
 void TodoItemWidget::SetIndex(uint32_t idx) 
 { 
 	Index = idx; 
-	OriginalRect.setCoords(0, idx * ItemWidgetWidth, 330, (idx + 1) * ItemWidgetWidth);
+	OriginalRect.setCoords(0, idx * ItemWidgetWidth, 346, (idx + 1) * ItemWidgetWidth);
 }
 
 void TodoItemWidget::AdjustOffsetPos(uint32_t offset)
@@ -67,8 +67,6 @@ void TodoItemWidget::mousePressEvent(QMouseEvent * event)
 
 	if(event->button() == Qt::RightButton)
 	{
-		qDebug() << "hi";
-
 		m_Menu->move(QCursor::pos().x(), QCursor::pos().y());
 		m_Menu->show();
 	}

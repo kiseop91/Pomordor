@@ -9,7 +9,7 @@ TodoPage::TodoPage(QWidget* parent)
 {
     ui->setupUi(this);
 	ui->ItemList->SetScrollbar(ui->ScrollBar);
-	ui->ItemList->PushItem("todo", "desc");
+	ui->PageTitle->setFont(QFont("D2Coding", 20, 100));
 
     connect(ui->pushButton, SIGNAL(clicked()), SLOT(AddItem()));
 

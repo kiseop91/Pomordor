@@ -21,7 +21,6 @@ TodoItemList::TodoItemList(QWidget* parent)
 		}
 
 		Offset -= 5 * dir;
-		qDebug() << Offset;
 		for (auto& item : m_Items)
 		{
 			item->AdjustOffsetPos(Offset);
@@ -73,11 +72,11 @@ void TodoItemList::PushItem(const QString & todoStr, const QString & description
 void TodoItemList::EraseItem(uint32_t idx)
 {
 	auto item = m_Items.begin() + idx;
-	if (m_Items.size() == presentMax)
+	if (m_Items.size() == presentMax + 1)
 	{
 		OffsetMax -= m_Items.size() * TodoItemWidget::GetHeight() - this->height();
 	}
-	else if (m_Items.size() > presentMax)
+	else if (m_Items.size() > presentMax + 1)
 	{
 		OffsetMax -= TodoItemWidget::GetHeight();
 	}
@@ -186,29 +185,21 @@ void TodoItemList::MoveSelectedWidget(uint32_t idx)
 
 void TodoItemList::keyPressEvent(QKeyEvent * event)
 {
-	qDebug() << "On key Event";
-
-	if (event->key() == Qt::Key_Up)
+	for (int i = 0; i < m_Items.size(); ++i)
 	{
-		for (int i = 1; i < m_Items.size(); ++i)
+		if (m_Items[i]->onSelected == true)
 		{
-			if (m_Items[i]->onSelected == true)
+			if (event->key() == Qt::Key_Up && i != 0)
 			{
 				MoveSelectedWidget(i - 1);
 				break;
 			}
-		}
-	}
-	else if (event->key() == Qt::Key_Down)
-	{
-		for (int i = 0; i < m_Items.size() - 1; ++i)
-		{
-			if (m_Items[i]->onSelected == true)
+
+			if (event->key() == Qt::Key_Down && i != m_Items.size() - 1)
 			{
 				MoveSelectedWidget(i + 1);
 				break;
 			}
 		}
 	}
-
 }
