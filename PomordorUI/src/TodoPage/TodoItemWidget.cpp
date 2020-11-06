@@ -2,9 +2,11 @@
 
 #include "TodoItemWidget.h"
 #include "ui_TodoItemWidget.h"
+#include "TodoItemList.h"
 
 TodoItemWidget::TodoItemWidget(QWidget* parent)
 	: QWidget(parent)
+	, m_MyList(static_cast<TodoItemList*>(parent))
 	, ui(new Ui::TodoItemWidget)
 {
 	ui->setupUi(this);
@@ -24,7 +26,30 @@ void TodoItemWidget::SetTodo(const QString & str)
 {
 }
 
+void TodoItemWidget::SetIndex(uint32_t idx) 
+{ 
+	Index = idx; 
+	OriginalRect.setCoords(0, idx * ItemWidgetWidth, 330, (idx + 1) * ItemWidgetWidth);
+}
+
+void TodoItemWidget::AdjustOffsetPos(uint32_t offset)
+{
+	OffsetedRect = OriginalRect;
+	OffsetedRect.adjust(0, -offset, 0, -offset);
+	setGeometry(OffsetedRect);
+}
+
 void TodoItemWidget::enterEvent(QEvent * event)
 {
-	qDebug() << "is Mouse Hove";
+	//qDebug() << "is Mouse Hove";
+}
+
+void TodoItemWidget::mousePressEvent(QMouseEvent * event)
+{
+	event->accept();
+
+	if (event->button() != Qt::MouseButton::RightButton)
+		return;
+
+	//m_MyList->RequestErase(Index);
 }

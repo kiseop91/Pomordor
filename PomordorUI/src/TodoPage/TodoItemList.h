@@ -16,6 +16,8 @@ protected:
 private:
 	std::vector<class TodoItemWidget*> m_Items;
 	int dir;
+	int Offset = 0;
+	int OffsetMax = 0;
 	int callCount = 0;
 	QTimer* m_WheelLoop;
 };
