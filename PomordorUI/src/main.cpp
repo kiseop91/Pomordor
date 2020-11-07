@@ -11,8 +11,6 @@ int main(int argc, char *argv[])
 	QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 	SetProcessDPIAware();
 
-	//Pome::printJson();
-
     QApplication a(argc, argv);
 				
 	QFontDatabase::addApplicationFont(":/font/fonts/segoeui.ttf");
@@ -20,8 +18,8 @@ int main(int argc, char *argv[])
 
 	MainWindow mainWindow;
 	mainWindow.show();
-	//SplashWidget s(&mainWindow);
 
+	//SplashWidget s(&mainWindow);  //on develop probably unused feature
 
     return a.exec();
 }
