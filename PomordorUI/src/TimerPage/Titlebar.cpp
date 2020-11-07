@@ -34,8 +34,14 @@ void TitleBar::mouseMoveEvent(QMouseEvent * event)
 		absY = event->pos().y();
 		inFirst = false;
 	}
-	if(m_ParentWidget == nullptr ) m_ParentWidget = this->parentWidget();
-	m_ParentWidget->move(mouseX - absX, mouseY - absY);
+
+	
+	if(m_ParentWidget == nullptr ) {
+		m_ParentWidget = this->parentWidget();
+		m_Offset = 0;
+	}
+
+	m_ParentWidget->move(mouseX - absX - m_Offset, mouseY - absY);
 }
 
 void TitleBar::mouseReleaseEvent(QMouseEvent* event)

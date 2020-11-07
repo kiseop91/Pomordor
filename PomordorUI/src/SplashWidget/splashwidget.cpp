@@ -23,12 +23,12 @@ SplashWidget::SplashWidget(QWidget *parent)
 
     m_Timer = new QTimer(this);
     connect(m_Timer, &QTimer::timeout, this, &SplashWidget::progress );
-    m_Timer->start(35);
+    m_Timer->start(17);
 
     ui->label_description->setText("<strong>WELCOME</strong> TO MY APPLICATION");
 
-    QTimer::singleShot(1500, this, [&]{ui->label_description->setText("<strong>LOADING</strong> DATABASE"); });
-    QTimer::singleShot(3000, this, [&]{ui->label_description->setText("<strong>LOADING</strong> USER INTERFACE"); });
+    QTimer::singleShot(750, this, [&]{ui->label_description->setText("<strong>LOADING</strong> DATABASE"); });
+    QTimer::singleShot(1500, this, [&]{ui->label_description->setText("<strong>LOADING</strong> USER INTERFACE"); });
 
     this->show();
 }
