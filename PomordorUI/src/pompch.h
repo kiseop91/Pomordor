@@ -20,3 +20,5 @@
 #include <QSystemTrayIcon>
 #include <QAction>
 #include <QMenu>
+#include <QKeyEvent>
+#include <QListWidget.h>

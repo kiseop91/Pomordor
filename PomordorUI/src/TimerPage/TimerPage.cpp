@@ -8,6 +8,8 @@
 #include "ScheduleDialog.h"
 #include "TrayIcon.h"
 
+#include "TodoPage/TodoPage.h"
+
 TimerPage::TimerPage(QWidget *parent)
 	: QWidget(parent)
 	, ui(new Ui::TimerPage)
