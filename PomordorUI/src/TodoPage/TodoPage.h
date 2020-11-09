@@ -14,6 +14,13 @@ public:
 
 private slots:
     void AddItem();
+	void WriteTodo();
+
+protected:
+	void keyPressEvent(QKeyEvent* event) override;
+
+signals:
+	void clickedEnter();
 
 private:
     Ui::TodoPage* ui;

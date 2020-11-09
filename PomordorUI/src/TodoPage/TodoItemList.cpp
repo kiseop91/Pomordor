@@ -50,7 +50,7 @@ TodoItemList::~TodoItemList()
 void TodoItemList::PushItem(const QString & todoStr, const QString & description)
 {
 	TodoItemWidget* item = new TodoItemWidget(this);
-	item->SetTodo(QString::number(m_Items.size() + 1));
+	item->SetTodo(todoStr);
 	item->SetDescription(description);
 
 	item->SetIndex(m_Items.size());

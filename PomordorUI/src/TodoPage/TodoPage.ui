@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>350</width>
+    <width>356</width>
     <height>440</height>
    </rect>
   </property>
@@ -142,11 +142,8 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="spacing">
-       <number>11</number>
-      </property>
       <property name="leftMargin">
-       <number>11</number>
+       <number>7</number>
       </property>
       <property name="topMargin">
        <number>0</number>
@@ -182,15 +179,51 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="AddDescript">
-        <property name="styleSheet">
-         <string notr="true">QLabel{
-	color : rgb(255, 150, 150);
+       <widget class="QFrame" name="AddTodoFrame">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QLineEdit" name="Line">
+         <property name="geometry">
+          <rect>
+           <x>7</x>
+           <y>7</y>
+           <width>281</width>
+           <height>23</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit{
+	border : none;
+	background-color : white;
+	
 }</string>
-        </property>
-        <property name="text">
-         <string>Add to-do item</string>
-        </property>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Label">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>0</y>
+           <width>111</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton{
+	border : none;
+	font-size : 18px;
+	background-color : none;
+	color : rgb(255, 155, 155);
+}</string>
+         </property>
+         <property name="text">
+          <string>Add a to-do</string>
+         </property>
+        </widget>
        </widget>
       </item>
      </layout>
