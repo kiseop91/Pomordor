@@ -7,33 +7,7 @@ TodoItemList::TodoItemList(QWidget* parent)
 	: QWidget(parent)
 	, m_WheelLoop(new QTimer)
 {
-	connect(m_WheelLoop, &QTimer::timeout, [this]() {
-		++callCount;
-		if (
-			!(0 <= Offset && Offset <= OffsetMax)
-			|| (Offset == 0 && dir == 1)
-			|| (Offset == OffsetMax && dir == -1)
-			)
-		{
-			callCount = 0;
-			m_WheelLoop->stop();
-			return;
-		}
-
-		Offset -= 5 * dir;
-		for (auto& item : m_Items)
-		{
-			item->AdjustOffsetPos(Offset);
-		}
-
-		if (callCount > 10)
-		{
-			callCount = 0;
-			m_WheelLoop->stop();
-		}
-		UpdateScrollbar();
-	});
-
+	connect(m_WheelLoop, SIGNAL(timeout()), this, SLOT(onWheelAdjust()));
 	setFocusPolicy(Qt::StrongFocus);
 }
 
@@ -46,44 +20,94 @@ TodoItemList::~TodoItemList()
 	m_Items.clear();
 }
 
+void TodoItemList::ScrollBar::UpdatePosition()
+{
+	size_t itemCount = m_LinkedList->m_Items.size();
+	uint32_t displayMaxCount = m_LinkedList->m_DisplayProp.MaxItemCount;
+	float displayMax = m_LinkedList->m_DisplayProp.MaxItem;
+	int displayOffset = m_LinkedList->m_DisplayProp.Offset;
+	int displayOffsetMax = m_LinkedList->m_DisplayProp.OffsetMax;
+
+	if (itemCount <= displayMaxCount)
+	{
+		this->hide();
+		return;
+	}
+
+	m_Height = (displayMax / (float)itemCount) * m_HeightMax;
+	m_TopMax = m_HeightMax - m_Height;
+	m_Top = (displayOffset / (float)displayOffsetMax) * m_TopMax;
+
+	setGeometry(this->x(), m_Top, this->width(), m_Height);
+	show();
+}
+
+void TodoItemList::onWheelAdjust()
+{
+	if (
+		!(0 <= m_DisplayProp.Offset && m_DisplayProp.Offset <= m_DisplayProp.OffsetMax)
+		|| (m_DisplayProp.Offset == 0 && m_OnWheelUp)
+		|| (m_DisplayProp.Offset == m_DisplayProp.OffsetMax && !m_OnWheelUp)
+		)
+	{
+		m_WheelLoop->stop();
+		return;
+	}
+
+	auto dir = m_OnWheelUp ? 1 : -1;
+	m_DisplayProp.Offset -= 5 * dir;
+	for (auto& item : m_Items)
+	{
+		item->AdjustOffsetPos(m_DisplayProp.Offset);
+	}
+
+	if (m_WheelAdjustCount > 10)
+	{
+		m_WheelLoop->stop();
+	}
+
+	m_ScrollBar->UpdatePosition();
+}
 
 void TodoItemList::PushItem(const QString & todoStr, const QString & description)
 {
+	calcPresentCount();
+
 	TodoItemWidget* item = new TodoItemWidget(this);
 	item->SetTodo(QString::number(m_Items.size() + 1));
 	item->SetDescription(description);
 
 	item->SetIndex(m_Items.size());
-	item->AdjustOffsetPos(Offset);
+	item->AdjustOffsetPos(m_DisplayProp.Offset);
 	m_Items.emplace_back(item);
 
-	if (m_Items.size() == presentMax)
+	if (m_Items.size() == m_DisplayProp.MaxItemCount)
 	{
-		OffsetMax += m_Items.size() * TodoItemWidget::GetHeight() - this->height();
+		m_DisplayProp.OffsetMax += m_Items.size() * TodoItemWidget::GetHeight() - this->height();
 	}
-	else if (m_Items.size() > presentMax)
+	else if (m_Items.size() > m_DisplayProp.MaxItemCount)
 	{
-		OffsetMax += TodoItemWidget::GetHeight();
+		m_DisplayProp.OffsetMax += TodoItemWidget::GetHeight();
 	}
 
-	UpdateScrollbar();
+	m_ScrollBar->UpdatePosition();
 }
 
 void TodoItemList::EraseItem(uint32_t idx)
 {
 	auto item = m_Items.begin() + idx;
-	if (m_Items.size() == presentMax + 1)
+	if (m_Items.size() == m_DisplayProp.MaxItemCount + 1)
 	{
-		OffsetMax -= m_Items.size() * TodoItemWidget::GetHeight() - this->height();
+		m_DisplayProp.OffsetMax -= m_Items.size() * TodoItemWidget::GetHeight() - this->height();
 	}
-	else if (m_Items.size() > presentMax + 1)
+	else if (m_Items.size() > m_DisplayProp.MaxItemCount + 1)
 	{
-		OffsetMax -= TodoItemWidget::GetHeight();
+		m_DisplayProp.OffsetMax -= TodoItemWidget::GetHeight();
 	}
 
-	if (Offset > OffsetMax)
+	if (m_DisplayProp.Offset > m_DisplayProp.OffsetMax)
 	{
-		Offset = OffsetMax;
+		m_DisplayProp.Offset = m_DisplayProp.OffsetMax;
 	}
 
 	delete *item;
@@ -92,29 +116,13 @@ void TodoItemList::EraseItem(uint32_t idx)
 	for (size_t i = 0; i < m_Items.size(); ++i)
 	{
 		m_Items[i]->SetIndex(i);
-		m_Items[i]->AdjustOffsetPos(Offset);
+		m_Items[i]->AdjustOffsetPos(m_DisplayProp.Offset);
 	}
 
-	UpdateScrollbar();
+	m_ScrollBar->UpdatePosition();
 }
 
-void TodoItemList::UpdateScrollbar()
-{
-	if (m_Items.size() <= presentMax)
-	{
-		m_ScrollBar->hide();
-		return;
-	}
-	m_ScrollBar->show();
-
-	ScrollBarHeight = (presentLimit / (float)m_Items.size()) * ScrollBarMaxHeight;
-	uint32_t scrollBarMaxY = ScrollBarMaxHeight - ScrollBarHeight;
-	ScrollBarY = (Offset / (float)OffsetMax) * scrollBarMaxY;
-
-	m_ScrollBar->setGeometry(346, ScrollBarY, 2, ScrollBarHeight);
-}
-
-void TodoItemList::UpdateSelectedWidget(uint32_t idx)
+void TodoItemList::updateSelectedWidget(uint32_t idx)
 {
 	for (size_t i = 0; i < m_Items.size(); ++i)
 	{
@@ -134,10 +142,36 @@ void TodoItemList::UpdateSelectedWidget(uint32_t idx)
 	}
 }
 
-void TodoItemList::CalcPresentCount()
+void TodoItemList::calcPresentCount()
 {
-	presentLimit = this->height() / (float)TodoItemWidget::GetHeight();
-	presentMax = (int)presentLimit;
+	m_DisplayProp.MaxItem = this->height() / (float)TodoItemWidget::GetHeight();
+	m_DisplayProp.MaxItemCount = (int)m_DisplayProp.MaxItem;
+}
+
+
+void TodoItemList::moveSelectedWidget(uint32_t idx)
+{
+	updateSelectedWidget(idx);
+
+	int left, top, right, bottom;
+	m_Items[idx]->OriginalRect.getCoords(&left, &top, &right, &bottom);
+
+	int curTopPoint = top - m_DisplayProp.Offset;
+	int curBottomPoint = bottom - m_DisplayProp.Offset;
+
+	if (curTopPoint < 0)
+	{
+		m_DisplayProp.Offset += curTopPoint;
+	}
+	if (curBottomPoint > this->height())
+	{
+		m_DisplayProp.Offset += curBottomPoint - this->height();
+	}
+	for (auto& item : m_Items)
+	{
+		item->AdjustOffsetPos(m_DisplayProp.Offset);
+	}
+	m_ScrollBar->UpdatePosition();
 }
 
 void TodoItemList::wheelEvent(QWheelEvent * event)
@@ -147,41 +181,13 @@ void TodoItemList::wheelEvent(QWheelEvent * event)
 		return;
 	m_WheelLoop->stop();
 
-	callCount = 0;
-	dir = event->angleDelta().ry() > 0 ? 1 : -1;
-
+	m_WheelAdjustCount = 0;
+	m_OnWheelUp = event->angleDelta().ry() > 0 ? true : false;
+	
 	m_WheelLoop->start(10);
 
 	event->accept();
 }
-
-void TodoItemList::MoveSelectedWidget(uint32_t idx)
-{
-	UpdateSelectedWidget(idx);
-
-	int left, top, right, bottom;
-	m_Items[idx]->OriginalRect.getCoords(&left, &top, &right, &bottom);
-
-
-	int curTopPoint = top - Offset;
-	int curBottomPoint = bottom - Offset;
-
-	if (curTopPoint < 0)
-	{
-		Offset += curTopPoint;
-	}
-	if (curBottomPoint > this->height())
-	{
-		Offset += curBottomPoint - this->height();
-	}
-	for (auto& item : m_Items)
-	{
-		item->AdjustOffsetPos(Offset);
-	}
-	UpdateScrollbar();
-
-}
-
 
 void TodoItemList::keyPressEvent(QKeyEvent * event)
 {
@@ -191,15 +197,16 @@ void TodoItemList::keyPressEvent(QKeyEvent * event)
 		{
 			if (event->key() == Qt::Key_Up && i != 0)
 			{
-				MoveSelectedWidget(i - 1);
+				moveSelectedWidget(i - 1);
 				break;
 			}
 
 			if (event->key() == Qt::Key_Down && i != m_Items.size() - 1)
 			{
-				MoveSelectedWidget(i + 1);
+				moveSelectedWidget(i + 1);
 				break;
 			}
 		}
 	}
 }
+
