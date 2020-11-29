@@ -5,6 +5,9 @@
 
 #include <Windows.h>
 
+//To DO : Set CMakeList.txt Debug Mode PreProcessor Define.
+#pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
+
 int main(int argc, char *argv[])
 {
 	QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
