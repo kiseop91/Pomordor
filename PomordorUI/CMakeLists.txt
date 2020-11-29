@@ -75,12 +75,15 @@ set(qt_moc_headers
 qt5_wrap_ui(project_headers_wrapped ${project_ui})
 qt5_wrap_cpp(project_sources_moc ${qt_moc_headers} )
 
+set (APP_ICON_RESOURCE_WINDOWS "assets/icon.rc") 
+
 add_executable(
 	${PROJECT_NAME} 
 	${project_headers} 
 	${project_sources} 
 	${project_sources_moc} 
-	${project_headers_wrapped} 
+	${project_headers_wrapped}
+	${APP_ICON_RESOURCE_WINDOWS}
 	assets/files.qrc
 )
 
