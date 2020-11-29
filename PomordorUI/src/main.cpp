@@ -17,9 +17,7 @@ int main(int argc, char *argv[])
 	QFontDatabase::addApplicationFont(":/font/fonts/D2Coding.ttf");
 
 	MainWindow mainWindow;
-	mainWindow.show();
-
-	//SplashWidget s(&mainWindow);  //on develop probably unused feature
+	SplashWidget s(&mainWindow);
 
     return a.exec();
 }
