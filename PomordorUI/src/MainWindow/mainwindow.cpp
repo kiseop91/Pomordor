@@ -30,6 +30,10 @@ MainWindow::MainWindow(QWidget *parent)
 	connect(ui->todoButton, &QPushButton::clicked, [this]() { ui->stackedWidget->setCurrentIndex(1); });
 	connect(ui->statisticsButton, &QPushButton::clicked, [this]() { ui->stackedWidget->setCurrentIndex(2); });
 	connect(ui->settingButton, &QPushButton::clicked, [this]() { ui->stackedWidget->setCurrentIndex(3); });
+
+	connect(ui->Title_Close, &QPushButton::clicked, [this]() { this->setHidden(true); });
+	connect(ui->Title_Minimul, &QPushButton::clicked, [this]() { this->showMinimized(); });
+	connect(ui->Title_Maximal, &QPushButton::clicked, [this]() { this->showMaximized(); });
 }
 
 
