@@ -7,7 +7,7 @@
 
 ### Pomodoro Timer
 
-- Edit...
+- Edit..
 - OS : Windows, Linux, Mac, Android 
  
 ## 👏How to Contribute
