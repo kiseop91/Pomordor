@@ -1,0 +1,6 @@
+
+QMAKE_PRL_TARGET = Qt6FbSupport.lib
+QMAKE_PRL_CONFIG = static
+QMAKE_PRL_VERSION = 6.0.0
+QMAKE_PRL_LIBS = Qt6Core Qt6Gui Qt6Core -lmpr -luserenv -ld3d11 -ldxgi -ldxguid
+QMAKE_PRL_LIBS_FOR_CMAKE = Qt6Core;Qt6Gui;Qt6Core;-lmpr;-luserenv;-ld3d11;-ldxgi;-ldxguid

@@ -1,0 +1,6 @@
+
+QMAKE_PRL_TARGET = Qt6QmlCompiler.lib
+QMAKE_PRL_CONFIG = static
+QMAKE_PRL_VERSION = 6.0.0
+QMAKE_PRL_LIBS = $$[QT_INSTALL_LIBS]/Qt6QmlDevTools.lib Qt6Core -lmpr -luserenv
+QMAKE_PRL_LIBS_FOR_CMAKE = $$[QT_INSTALL_LIBS]/Qt6QmlDevTools.lib;Qt6Core;-lmpr;-luserenv

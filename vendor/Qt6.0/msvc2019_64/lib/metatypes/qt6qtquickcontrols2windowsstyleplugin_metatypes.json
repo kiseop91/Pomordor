@@ -1,0 +1,19 @@
+[
+    {
+        "classes": [
+            {
+                "className": "QtQuickControls2WindowsStylePlugin",
+                "object": true,
+                "qualifiedClassName": "QtQuickControls2WindowsStylePlugin",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuickStylePlugin"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qtquickcontrols2windowsstyleplugin.cpp",
+        "outputRevision": 68
+    }
+]

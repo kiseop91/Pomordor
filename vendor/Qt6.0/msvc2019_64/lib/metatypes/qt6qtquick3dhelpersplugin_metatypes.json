@@ -1,0 +1,172 @@
+[
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "GridGeometry"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "270"
+                    }
+                ],
+                "className": "GridGeometry",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "horizontalLines",
+                        "notify": "horizontalLinesChanged",
+                        "read": "horizontalLines",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setHorizontalLines"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "verticalLines",
+                        "notify": "verticalLinesChanged",
+                        "read": "verticalLines",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false,
+                        "write": "setVerticalLines"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "horizontalStep",
+                        "notify": "horizontalStepChanged",
+                        "read": "horizontalStep",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setHorizontalStep"
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "verticalStep",
+                        "notify": "verticalStepChanged",
+                        "read": "verticalStep",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "float",
+                        "user": false,
+                        "write": "setVerticalStep"
+                    }
+                ],
+                "qualifiedClassName": "GridGeometry",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "horizontalLinesChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "verticalLinesChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "horizontalStepChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "verticalStepChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "count",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setHorizontalLines",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "count",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "setVerticalLines",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "step",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setHorizontalStep",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "step",
+                                "type": "float"
+                            }
+                        ],
+                        "name": "setVerticalStep",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuick3DGeometry"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "gridgeometry_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "className": "QtQuick3DHelpersPlugin",
+                "object": true,
+                "qualifiedClassName": "QtQuick3DHelpersPlugin",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQmlEngineExtensionPlugin"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "plugin.cpp",
+        "outputRevision": 68
+    }
+]

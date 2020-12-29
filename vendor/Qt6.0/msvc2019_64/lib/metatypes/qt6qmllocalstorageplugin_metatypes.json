@@ -1,0 +1,63 @@
+[
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "LocalStorage"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "512"
+                    },
+                    {
+                        "name": "QML.Singleton",
+                        "value": "true"
+                    }
+                ],
+                "className": "QQuickLocalStorage",
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "args",
+                                "type": "QQmlV4Function*"
+                            }
+                        ],
+                        "name": "openDatabaseSync",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "qualifiedClassName": "QQuickLocalStorage",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qquicklocalstorage_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "className": "QQmlLocalStoragePlugin",
+                "object": true,
+                "qualifiedClassName": "QQmlLocalStoragePlugin",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQmlEngineExtensionPlugin"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "plugin.cpp",
+        "outputRevision": 68
+    }
+]

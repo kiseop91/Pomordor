@@ -1,0 +1,4 @@
+
+QMAKE_PRL_TARGET = Qt6QuickTestd.dll
+QMAKE_PRL_CONFIG = shared
+QMAKE_PRL_VERSION = 6.0.0

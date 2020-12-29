@@ -1,0 +1,685 @@
+[
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "anonymous"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "256"
+                    }
+                ],
+                "className": "QQuickTouchEventSequence",
+                "object": true,
+                "qualifiedClassName": "QQuickTouchEventSequence",
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "touchId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "item",
+                                "type": "QObject*"
+                            },
+                            {
+                                "name": "x",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "y",
+                                "type": "qreal"
+                            }
+                        ],
+                        "name": "press",
+                        "returnType": "QObject*"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "touchId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "item",
+                                "type": "QObject*"
+                            },
+                            {
+                                "name": "x",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "y",
+                                "type": "qreal"
+                            }
+                        ],
+                        "name": "move",
+                        "returnType": "QObject*"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "touchId",
+                                "type": "int"
+                            },
+                            {
+                                "name": "item",
+                                "type": "QObject*"
+                            },
+                            {
+                                "name": "x",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "y",
+                                "type": "qreal"
+                            }
+                        ],
+                        "name": "release",
+                        "returnType": "QObject*"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "touchId",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "stationary",
+                        "returnType": "QObject*"
+                    },
+                    {
+                        "access": "public",
+                        "name": "commit",
+                        "returnType": "QObject*"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            },
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "TestEvent"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "256"
+                    }
+                ],
+                "className": "QuickTestEvent",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": true,
+                        "name": "defaultMouseDelay",
+                        "read": "defaultMouseDelay",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "QuickTestEvent",
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "key",
+                                "type": "int"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "int"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "keyPress",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "key",
+                                "type": "int"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "int"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "keyRelease",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "key",
+                                "type": "int"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "int"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "keyClick",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "character",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "int"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "keyPressChar",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "character",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "int"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "keyReleaseChar",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "character",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "int"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "keyClickChar",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "keySequence",
+                                "type": "QVariant"
+                            }
+                        ],
+                        "name": "keySequence",
+                        "returnType": "bool",
+                        "revision": 258
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "item",
+                                "type": "QObject*"
+                            },
+                            {
+                                "name": "x",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "y",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "button",
+                                "type": "int"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "int"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "mousePress",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "item",
+                                "type": "QObject*"
+                            },
+                            {
+                                "name": "x",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "y",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "button",
+                                "type": "int"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "int"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "mouseRelease",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "item",
+                                "type": "QObject*"
+                            },
+                            {
+                                "name": "x",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "y",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "button",
+                                "type": "int"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "int"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "mouseClick",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "item",
+                                "type": "QObject*"
+                            },
+                            {
+                                "name": "x",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "y",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "button",
+                                "type": "int"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "int"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "mouseDoubleClick",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "item",
+                                "type": "QObject*"
+                            },
+                            {
+                                "name": "x",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "y",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "button",
+                                "type": "int"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "int"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "mouseDoubleClickSequence",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "item",
+                                "type": "QObject*"
+                            },
+                            {
+                                "name": "x",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "y",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            },
+                            {
+                                "name": "buttons",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "mouseMove",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "item",
+                                "type": "QObject*"
+                            },
+                            {
+                                "name": "x",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "y",
+                                "type": "qreal"
+                            },
+                            {
+                                "name": "buttons",
+                                "type": "int"
+                            },
+                            {
+                                "name": "modifiers",
+                                "type": "int"
+                            },
+                            {
+                                "name": "xDelta",
+                                "type": "int"
+                            },
+                            {
+                                "name": "yDelta",
+                                "type": "int"
+                            },
+                            {
+                                "name": "delay",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "mouseWheel",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "item",
+                                "type": "QObject*"
+                            }
+                        ],
+                        "name": "touchEvent",
+                        "returnType": "QQuickTouchEventSequence*"
+                    },
+                    {
+                        "access": "public",
+                        "name": "touchEvent",
+                        "returnType": "QQuickTouchEventSequence*"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "quicktestevent_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Foreign",
+                        "value": "QuickTestResult"
+                    },
+                    {
+                        "name": "QML.Element",
+                        "value": "TestResult"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "256"
+                    }
+                ],
+                "className": "QuickTestResultForeign",
+                "gadget": true,
+                "qualifiedClassName": "QuickTestResultForeign"
+            }
+        ],
+        "inputFile": "quicktestresultforeign_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "TestUtil"
+                    },
+                    {
+                        "name": "QML.AddedInVersion",
+                        "value": "256"
+                    }
+                ],
+                "className": "QuickTestUtil",
+                "object": true,
+                "properties": [
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "printAvailableFunctions",
+                        "notify": "printAvailableFunctionsChanged",
+                        "read": "printAvailableFunctions",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "bool",
+                        "user": false
+                    },
+                    {
+                        "constant": false,
+                        "designable": true,
+                        "final": false,
+                        "name": "dragThreshold",
+                        "notify": "dragThresholdChanged",
+                        "read": "dragThreshold",
+                        "required": false,
+                        "scriptable": true,
+                        "stored": true,
+                        "type": "int",
+                        "user": false
+                    }
+                ],
+                "qualifiedClassName": "QuickTestUtil",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "printAvailableFunctionsChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "dragThresholdChanged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "v",
+                                "type": "QVariant"
+                            }
+                        ],
+                        "name": "typeName",
+                        "returnType": "QJSValue"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "act",
+                                "type": "QVariant"
+                            },
+                            {
+                                "name": "exp",
+                                "type": "QVariant"
+                            }
+                        ],
+                        "name": "compare",
+                        "returnType": "bool"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "frameIndex",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "callerFile",
+                        "returnType": "QJSValue"
+                    },
+                    {
+                        "access": "public",
+                        "name": "callerFile",
+                        "returnType": "QJSValue"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "frameIndex",
+                                "type": "int"
+                            }
+                        ],
+                        "name": "callerLine",
+                        "returnType": "int"
+                    },
+                    {
+                        "access": "public",
+                        "name": "callerLine",
+                        "returnType": "int"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "quicktestutil_p.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "className": "QTestQmlModule",
+                "object": true,
+                "qualifiedClassName": "QTestQmlModule",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQmlEngineExtensionPlugin"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "main.cpp",
+        "outputRevision": 68
+    }
+]

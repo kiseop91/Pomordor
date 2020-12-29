@@ -13,10 +13,10 @@ ADD_DEFINITIONS(-D_UNICODE)
 
 if(MSVC)
 # Instruct CMake where to find cmake related stuffs
-set (CMAKE_PREFIX_PATH "..\\vendor\\Qt5.14.2\\msvc2017")
+set (CMAKE_PREFIX_PATH "..\\vendor\\Qt6.0\\msvc2019_64")
 
 # Set QTDIR to Qt5 SDK path
-set (QTDIR "../Qt5.14.2/msvc2017/")
+set (QTDIR "../Qt6.0/msvc2019_64/")
 set (RUN_ENV "PATH=${QTDIR}/bin")
 MESSAGE ("-- RUN_ENV: ${RUN_ENV}")
 endif(MSVC)

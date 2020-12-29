@@ -1,0 +1,11 @@
+{
+    "module_name": "Gui",
+    "version": "6.0.0",
+    "built_with": {
+        "compiler_id": "MSVC",
+        "compiler_target": "",
+        "compiler_version": "19.27.29112.0",
+        "cross_compiled": false,
+        "target_system": "Windows"
+    }
+}

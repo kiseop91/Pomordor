@@ -1,0 +1,6 @@
+
+QMAKE_PRL_TARGET = Qt6QmlDebugd.lib
+QMAKE_PRL_CONFIG = static
+QMAKE_PRL_VERSION = 6.0.0
+QMAKE_PRL_LIBS = $$[QT_INSTALL_LIBS]/Qt6PacketProtocold.lib Qt6Qmld Qt6Networkd Qt6Cored -lmpr -luserenv -lws2_32 -lshell32
+QMAKE_PRL_LIBS_FOR_CMAKE = $$[QT_INSTALL_LIBS]/Qt6PacketProtocold.lib;Qt6Qmld;Qt6Networkd;Qt6Cored;-lmpr;-luserenv;-lws2_32;-lshell32

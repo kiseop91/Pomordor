@@ -1,0 +1,4 @@
+
+QMAKE_PRL_TARGET = Qt6Core_qobjectd.lib
+QMAKE_PRL_CONFIG = static
+QMAKE_PRL_VERSION = 6.0.0
