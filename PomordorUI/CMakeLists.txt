@@ -122,9 +122,9 @@ endif()
 
 add_custom_command( 
 	TARGET ${PROJECT_NAME} 
-	COMMAND echo "Create Qt5 dependencies.."
+	COMMAND echo "Create Qt6 dependencies.."
 	COMMAND call 
-	vendor\\Qt5.14.2\\msvc2017\\bin\\windeployqt.exe
+	vendor\\Qt6.0\\msvc2019_64\\bin\\windeployqt.exe
 	$(OutputPath)$(TargetName)$(TargetExt)
 	${WindpOption}
 	WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
