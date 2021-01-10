@@ -13,7 +13,7 @@
 #include <QTimer>
 #include <QPainter>
 #include <QDebug>
-#include <QDesktopWidget>
+//#include <QDesktopWidget>
 #include <QProgressbar>
 #include <QFontDatabase>
 #include <QMouseEvent>
