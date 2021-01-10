@@ -48,11 +48,11 @@ void TodoItemWidget::AdjustOffsetPos(uint32_t offset)
 	setGeometry(OffsetedRect);
 }
 
-void TodoItemWidget::enterEvent(QEvent * event)
-{
-	bool onHover = true;
-	setStyleSheet("background-color : rgb(233, 233, 233);");
-}
+//void TodoItemWidget::enterEvent(QEvent * event) 
+//{
+//	bool onHover = true;
+//	setStyleSheet("background-color : rgb(233, 233, 233);");
+//}
 
 void TodoItemWidget::leaveEvent(QEvent * event)
 {
