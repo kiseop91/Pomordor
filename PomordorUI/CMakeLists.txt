@@ -21,7 +21,7 @@ set (RUN_ENV "PATH=${QTDIR}/bin")
 MESSAGE ("-- RUN_ENV: ${RUN_ENV}")
 endif(MSVC)
 
-find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
+find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui)
 
 set(project_ui
 	src/TimerPage/TimerPage.ui
@@ -72,8 +72,8 @@ set(qt_moc_headers
 	src/MainWindow/mainwindow.h
 )
 
-qt5_wrap_ui(project_headers_wrapped ${project_ui})
-qt5_wrap_cpp(project_sources_moc ${qt_moc_headers} )
+qt_wrap_ui(project_headers_wrapped ${project_ui})
+qt_wrap_cpp(project_sources_moc ${qt_moc_headers} )
 
 set (APP_ICON_RESOURCE_WINDOWS "assets/icon.rc") 
 
@@ -108,9 +108,9 @@ target_include_directories(
 
 target_link_libraries(${PROJECT_NAME}
     PRIVATE
-    Qt5::Core
-    Qt5::Gui
-    Qt5::Widgets
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Widgets
     PomordorEngine
 )
 
