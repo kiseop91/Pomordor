@@ -1,3 +1,15 @@
+---
+name: name 테스트 입니다.
+about: about 테스트입니다.
+title: "[제목 테스트] : 제목"
+labels: 라벨테스트
+assignees: kiseop91
+
+---
+
+### 아래에 자유롭게 질문을 입력해주세요!
+
+
 ### 테스트
 
 # Pull Request Template
