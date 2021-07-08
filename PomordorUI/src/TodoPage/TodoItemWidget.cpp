@@ -63,7 +63,7 @@ void TodoItemWidget::leaveEvent(QEvent * event)
 
 void TodoItemWidget::mousePressEvent(QMouseEvent * event)
 {
-	m_MyList->UpdateSelectedWidget(Index);
+	m_MyList->updateSelectedWidget(Index);
 
 	if(event->button() == Qt::RightButton)
 	{
